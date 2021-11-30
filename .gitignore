@@ -6,3 +6,5 @@ public/bundle.js.LICENSE.txt
 npm-debug.log
 yarn-error.log
 package-lock.json
+
+secrets.js
