@@ -1,17 +1,15 @@
-const isDev = process.env.NODE_ENV === "development";
-const path = require("path");
+const isDev = process.env.NODE_ENV === 'development';
+const path = require('path');
 
 module.exports = {
-  mode: isDev ? "development" : "production",
-  entry: [
-    './client/index.js'
-  ],
+  mode: isDev ? 'development' : 'production',
+  entry: ['regenerator-runtime/runtime.js', './client/index.js'],
   output: {
-    path: path.resolve(__dirname, "public"),
-    publicPath: "/public/",
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'public'),
+    publicPath: '/public/',
+    filename: 'bundle.js',
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   watchOptions: {
     ignored: /node_modules/,
   },
@@ -21,16 +19,16 @@ module.exports = {
         test: /\.?js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
-}
+};
