@@ -26,13 +26,13 @@ const App = () => {
 
   const onClick = (e) => {
     // avoid directly mutating state
-    if (!e.latLng) setClicks([...clicks, e.latLng]);
+    if (e.latLng) setClicks([...clicks, e.latLng]);
   };
 
   const onIdle = (m) => {
     console.log('onIdle');
-    if (!m.getZoom()) setZoom(m.getZoom());
-    if (!m.getCenter()) setCenter(m.getCenter().toJSON());
+    if (m.getZoom()) setZoom(m.getZoom());
+    if (m.getCenter()) setCenter(m.getCenter().toJSON());
   };
 
   return (
