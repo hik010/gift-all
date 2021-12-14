@@ -25,6 +25,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/api', require('./api'));
+app.use('/auth', require('./auth'));
 
 app.get('/maps-api-key', (req, res) => {
   res.send(process.env.MAPS_API_KEY);
