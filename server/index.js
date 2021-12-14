@@ -6,7 +6,7 @@ const socketio = require('socket.io');
 const seed = require('../script/seed');
 
 const router = require('./api');
-const db = require('./db');
+const {db} = require('./db')
 const redisClient = redis.createClient();
 
 if (process.env.NODE_ENV !== 'production') require('../secrets');

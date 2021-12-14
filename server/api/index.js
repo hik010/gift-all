@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 module.exports = router;
 
-
+router.use('/etsy', require('./etsy'))
 
 
 router.use((req,res,next) => {

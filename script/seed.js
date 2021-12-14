@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User },
+  models: { User, Item },
 } = require('../server/db');
 
 /**
@@ -18,6 +18,16 @@ async function seed() {
     User.create({ email: 'cody@gmail.com', password: '123' }),
     User.create({ email: 'murphy@gmail.com', password: '123' }),
   ]);
+
+  const items = await Item.create({
+    id: 923925068,
+    title: 'Dainty Circular Stud Earrings  Handmade Jewelry  Sterling | Etsy',
+    price: 28.88,
+    num_sales: 3220,
+    rating: 4.9013,
+    image:
+      'https://i.etsystatic.com/26061027/r/il/b7d84a/2777550040/il_794xN.2777550040_hhka.jpg',
+  });
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
