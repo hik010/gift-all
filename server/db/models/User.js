@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
 // const { validate } = require('webpack/node_modules/schema-utils');
-const Wishlist = require('./Wishlist')
+const Wishlist = require('./Wishlist');
 
 const SALT_ROUNDS = 5;
 
@@ -36,7 +36,7 @@ const User = db.define('user', {
       isUrl: true,
     },
     defaultValue:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AUser-avatar.svg&psig=AOvVaw14qo28HsG1HuwWl8JFCEMc&ust=1639611579071000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKCg_5-75PQCFQAAAAAdAAAAABAJ',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png',
   },
 });
 
@@ -70,12 +70,13 @@ User.authenticate = async function ({ email, password }) {
 User.findByToken = async function (token) {
   try {
     const { id } = await jwt.verify(token, process.env.JWT);
-    const user = User.findByPk(id);
+    const user = await User.findByPk(id);
     if (!user) {
       throw 'nooo';
     }
     return user;
   } catch (ex) {
+    console.log(ex);
     const error = Error('bad token');
     error.status = 401;
     throw error;
@@ -85,18 +86,21 @@ User.findByToken = async function (token) {
 /**
  * hooks
  */
-const hashPassword = async user => {
+const hashPassword = async (user) => {
   //in case the password has been changed, we want to encrypt it with bcrypt
   if (user.changed('password')) {
     user.password = await bcrypt.hash(user.password, SALT_ROUNDS);
   }
 };
 
-const defaultList = async user => {
-  let newList = await Wishlist.create({name: `default list`, userId: user.id})
-}
+const defaultList = async (user) => {
+  let newList = await Wishlist.create({
+    name: `default list`,
+    userId: user.id,
+  });
+};
 
 User.beforeCreate(hashPassword);
 User.afterCreate(defaultList);
 User.beforeUpdate(hashPassword);
-User.beforeBulkCreate(users => Promise.all(users.map(hashPassword)));
+User.beforeBulkCreate((users) => Promise.all(users.map(hashPassword)));

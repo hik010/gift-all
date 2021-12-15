@@ -21,12 +21,11 @@ const withRouter = WrappedComponent => props => {
 
 const RoutesContainer = props => {
   useEffect(() => {
-    console.log('did mount');
     props.loadInitialData();
   }, []);
 
   return (
-    <div>
+    <div className='routes-container'>
       {props.isLoggedIn ? (
         <Routes>
           <Route path="/home" element={<Home />} />

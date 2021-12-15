@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 clientSocket.on('connect', () => {
-  console.log('here')
+  console.log('connected ', clientSocket.id)
 });
 
 export default clientSocket;

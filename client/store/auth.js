@@ -12,12 +12,27 @@ const SET_AUTH = 'SET_AUTH';
 /**
  * ACTION CREATORS
  */
-const setAuth = auth => ({ type: SET_AUTH, auth });
+const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
+
+export const changeAuth = (userData) => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem(TOKEN);
+    if (token) {
+      const res = await axios.put('/api/user', {
+        headers: {
+          authorization: token,
+        },
+        body: userData
+      });
+      dispatch(setAuth(res.data));
+    }
+  };
+};
+export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const res = await axios.get('/auth/me', {
@@ -32,7 +47,7 @@ export const me = () => async dispatch => {
   }
 };
 
-export const authenticate = (email, password, method) => async dispatch => {
+export const authenticate = (email, password, method) => async (dispatch) => {
   try {
     const res = await axios.post(`/auth/${method}`, { email, password });
     window.localStorage.setItem(TOKEN, res.data.token);
