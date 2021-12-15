@@ -26,6 +26,7 @@ def etsy_single(etsy_link):
   data['num_sales'] = int(numSales.split(' ')[0].replace(',',''))
   data['rating'] = float(ratings)
   data['image'] = first_img
+  data['url'] = etsy_link
 
   print(json.dumps(data))
 

@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Item },
+  models: { User, Item, Wishlist_Item, Wishlist },
 } = require('../server/db');
 
 /**
@@ -31,6 +31,9 @@ async function seed() {
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
+
+  await Wishlist_Item.create({wishlistId: 1, itemId: items.id, quantity: 3})
+
   return {
     users: {
       cody: users[0],
