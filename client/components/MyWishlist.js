@@ -27,7 +27,7 @@ const MyWishlist = () => {
     <div className="my-wishlist">
       <h4 className="mt-5">My Wishlist</h4>
       {JSON.stringify(allLists) !== '{}' ? (
-        <select className="form-select" aria-label="Default select example">
+        <select className="form-select w-25" aria-label="Default select example">
           {allLists.map((list) => (
             <option key={list.id} value={list.id}>
               {list.name}
@@ -49,7 +49,7 @@ const MyWishlist = () => {
             Add
           </button>
           <div className="modal fade" id="addItem" tabIndex="-1">
-            <div className="modal-dialog">
+            <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="exampleModalLabel">
@@ -73,9 +73,9 @@ const MyWishlist = () => {
                   >
                     Close
                   </button>
-                  <button type="button" className="btn btn-primary">
+                  {/* <button type="button" className="btn btn-primary">
                     Save changes
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

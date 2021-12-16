@@ -6,8 +6,9 @@ module.exports = router;
 
 const pythonPromise = data => {
   let scriptPath = path.join(__dirname, '..', '..', 'script', 'scrape.py');
+  let pythonPath = '/Users/hyo.kim/opt/anaconda3/envs/web-scraping/bin/python'
   return new Promise((resolve, reject) => {
-    const python = spawn('python', [scriptPath, ...data]);
+    const python = spawn(pythonPath, [scriptPath, ...data]);
 
     python.stdout.on('data', data => {
       resolve(data.toString());
@@ -21,7 +22,7 @@ const pythonPromise = data => {
 
 router.post('/', async (req, res, next) => {
   try {
-    let dataFromPython = await pythonPromise([req.body.links]);
+    let dataFromPython = await pythonPromise([req.body.link]);
     res.send(dataFromPython);
   } catch (err) {
     console.log(err)
