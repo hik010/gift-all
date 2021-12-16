@@ -41,11 +41,12 @@ const AddItemForm = () => {
 
   const fetchData = async (name, link) => {
     try {
-      console.log(link);
       let { data } = await axios.get(`/api/${name.toLowerCase()}`, {
-        link: link,
+        headers : {
+          link
+        }
       });
-      console.log(data);
+      // data scraped
     } catch (e) {
       console.error('error in fetchData', fetchData);
     }
