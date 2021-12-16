@@ -35,19 +35,21 @@ export const getWishlist = (list) => {
         dispatch(setWishlist(res.data));
       }
     } catch (err) {
-      console.err('err in getWishlist', err);
+      console.error('err in getWishlist', err);
     }
   };
 };
 
-export const addItemThunk = (wishListId, itemData) => {
-  return async (dispatch) => {
+export const addItemThunk = (itemData) => {
+  return async (dispatch, getState) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
+        let wishlistId = getState().singleWishlist.id;
+        console.log(wishlistId)
         const res = await axios.post(
           `/api/wishlist-item`,
-          { wishListId, itemData },
+          { wishlistId, itemData },
           {
             headers: {
               authorization: token,
@@ -57,7 +59,7 @@ export const addItemThunk = (wishListId, itemData) => {
         dispatch(addItem(res.data));
       }
     } catch (err) {
-      console.err('err in addItemThunk', err);
+      console.error('err in addItemThunk', err);
     }
   };
 };
@@ -68,7 +70,7 @@ export default function (state = {}, action) {
       return action.payload;
     case ADD_ITEM: {
       let prevItems = state.items;
-      return { ...state, items: [...prevItems, action.data] };
+      return { ...state, items: [...prevItems, action.payload] };
     }
     default:
       return state;

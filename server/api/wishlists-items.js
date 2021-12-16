@@ -14,27 +14,25 @@ router.post('/', requireToken, async (req, res, next) => {
   try {
     // create item with item data
     const { wishlistId, itemData } = req.body;
-    let [item, created] = await Item.findOrCreate({
-      where: {
-        price: itemData.price,
-        title: itemData.title,
-        source: itemData.source,
-      },
-      defaults: itemData,
-    });
+    // if itemData.id exsits, no need to create
+    let item;
+    if (!itemData.id) {
+      item = await Item.create(itemData);
+    } else item = itemData;
 
     // create entry in wishlist-items
     let new_entry = await Wishlist_Item.create({
       itemId: item.id,
-      wishlistId,
-      quantity: itemData.quantity,
-      note: itemData.note,
+      wishlistId: wishlistId,
+      // quantity: itemData.quantity,
+      // note: itemData.note,
     });
 
-    let itemReturn = {...item.dataValues, wishlist_item : new_entry}
+    let itemReturn = { ...item.dataValues, wishlist_item: new_entry };
 
     res.json(itemReturn);
   } catch (e) {
+    console.log(e);
     next(e);
   }
 });
@@ -66,7 +64,7 @@ router.delete('/', requireToken, async (req, res, next) => {
     let toDestroy = await Wishlist_Item.findOne({
       where: {
         wishlistId,
-        itemId : itemData.id,
+        itemId: itemData.id,
       },
     });
 

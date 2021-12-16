@@ -27,7 +27,10 @@ const MyWishlist = () => {
     <div className="my-wishlist">
       <h4 className="mt-5">My Wishlist</h4>
       {JSON.stringify(allLists) !== '{}' ? (
-        <select className="form-select w-25" aria-label="Default select example">
+        <select
+          className="form-select w-25"
+          aria-label="Default select example"
+        >
           {allLists.map((list) => (
             <option key={list.id} value={list.id}>
               {list.name}
@@ -35,51 +38,51 @@ const MyWishlist = () => {
           ))}
         </select>
       ) : null}
+      <div className="modal fade" id="addItem" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <AddItemForm />
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              {/* <button type="button" className="btn btn-primary">
+                    Save changes
+                  </button> */}
+            </div>
+          </div>
+        </div>
+      </div>
       {selectedList.items ? (
         <div className="list-items d-flex mt-3 justify-content-start">
           {selectedList.items.map((item) => (
             <SingleWishItem key={item.id} item={item} />
           ))}
           <button
-            className="btn btn-success"
+            className="btn btn-success ms-3"
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#addItem"
           >
             Add
           </button>
-          <div className="modal fade" id="addItem" tabIndex="-1">
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">
-                    Modal title
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <AddItemForm />
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  {/* <button type="button" className="btn btn-primary">
-                    Save changes
-                  </button> */}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       ) : null}
     </div>

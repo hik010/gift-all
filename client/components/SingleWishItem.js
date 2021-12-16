@@ -1,10 +1,12 @@
 import React from 'react';
 
-const SingleWishItem = ({item}) => {
+const SingleWishItem = ({ item }) => {
   return (
-    <div className="single-item d-flex" key={item.id}>
-      <img style={{ width: '15%' }} src={item.image}></img>
-      <section className="item-info ms-2 w-25">
+    <div className="single-item d-flex mt-2" style={{width: '27vw'}} key={item.id}>
+      <div className='w-50'>
+        <img className='w-100' src={item.image}></img>
+      </div>
+      <section className="item-info ms-2 w-50">
         <a href={item.link} target="_blank">
           <h5>{item.title}</h5>
         </a>
@@ -15,4 +17,4 @@ const SingleWishItem = ({item}) => {
     </div>
   );
 };
-export default SingleWishItem
+export default SingleWishItem;

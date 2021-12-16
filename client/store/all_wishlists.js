@@ -25,7 +25,7 @@ export const getAllLists = () => {
         dispatch(setAllLists(res.data));
       }
     } catch (err) {
-      console.err('err in getAllLists', err);
+      console.error('err in getAllLists', err);
     }
   }
 }
