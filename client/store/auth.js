@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Navigate } from 'react-router';
 import history from '../history';
 
 const TOKEN = 'token';

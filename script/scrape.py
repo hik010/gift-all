@@ -20,13 +20,14 @@ def etsy_single(etsy_link):
   ratings = listing_page.find('input', attrs={'name': 'rating'})['value']
 
   data = {}
-  data['id'] = int(listing_id)
+  data['id'] = listing_id
   data['title'] = title
   data['price'] = float(price.split('$')[1])
   data['num_sales'] = int(numSales.split(' ')[0].replace(',',''))
   data['rating'] = float(ratings)
   data['image'] = first_img
-  data['url'] = etsy_link
+  data['link'] = etsy_link
+  data['source'] = 'etsy'
 
   print(json.dumps(data))
 

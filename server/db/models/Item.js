@@ -1,43 +1,42 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 const axios = require('axios');
-
 
 const Item = db.define('item', {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     unique: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
-  type: {
-    type: Sequelize.ENUM('etsy', 'others'),
-    validate: {
-      isIn: [['etsy','others']]
-    },
-    defaultValue: 'etsy'
+  source: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: 'custom',
   },
   title: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
-  price : {
-    type: Sequelize.DECIMAL(10,2),
-    allowNull: false
-  },
-  num_sales: {
-    type: Sequelize.INTEGER
+  price: {
+    type: Sequelize.DECIMAL(10, 2),
+    allowNull: false,
   },
   rating: {
-    type: Sequelize.DECIMAL
+    type: Sequelize.DECIMAL,
   },
   image: {
     type: Sequelize.TEXT,
     validate: {
-      isUrl: true
-    }
+      isUrl: true,
+    },
   },
+  link: {
+    type: Sequelize.TEXT,
+    validate: {
+      isUrl: true,
+    },
+  },
+});
 
-})
-
-module.exports = Item
+module.exports = Item;

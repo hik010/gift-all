@@ -10,7 +10,6 @@ router.put('/', requireToken, async(req,res,next) => {
   try {
     const updated = await req.user.update(req.body.body);
     res.json(updated);
-    console.log(updated)
   } catch (err) {
     next(err);
   }

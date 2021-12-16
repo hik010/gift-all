@@ -6,6 +6,9 @@ const Wishlist_Item = db.define('wishlist_item', {
   quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 1
+  },
+  note: {
+    type: Sequelize.STRING
   }
 })
 
