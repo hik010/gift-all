@@ -8,7 +8,7 @@ module.exports = router;
 // PUT /api/user ==> to update my user information
 router.put('/', requireToken, async(req,res,next) => {
   try {
-    const updated = await req.user.update(req.body.body);
+    const updated = await req.user.update(req.body);
     res.json(updated);
   } catch (err) {
     next(err);

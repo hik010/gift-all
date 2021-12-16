@@ -21,11 +21,10 @@ export const changeAuth = (userData) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem(TOKEN);
     if (token) {
-      const res = await axios.put('/api/user', {
+      const res = await axios.put('/api/user', userData, {
         headers: {
           authorization: token,
         },
-        body: userData
       });
       dispatch(setAuth(res.data));
     }

@@ -20,7 +20,7 @@ async function seed() {
   ]);
 
   const item = await Item.create({
-    id: '923925068',
+    product_id: '923925068',
     title: 'Dainty Circular Stud Earrings  Handmade Jewelry  Sterling | Etsy',
     source: 'etsy',
     price: 28.88,
@@ -31,7 +31,7 @@ async function seed() {
   });
 
   const item2 = await Item.create({
-    id: '8325939041364383439',
+    product_id: '8325939041364383439',
     title: "Minecraft 'Squid' Glow in The Dark Pillow Buddy",
     price: 15.96,
     rating: 4.8,

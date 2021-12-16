@@ -3,11 +3,9 @@ const db = require('../db');
 const axios = require('axios');
 
 const Item = db.define('item', {
-  id: {
+  product_id: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false,
-    primaryKey: true,
   },
   source: {
     type: Sequelize.STRING,
@@ -30,6 +28,7 @@ const Item = db.define('item', {
     validate: {
       isUrl: true,
     },
+    defaultValue: 'https://image.shutterstock.com/image-vector/new-item-sign-stamp-on-260nw-1773071672.jpg'
   },
   link: {
     type: Sequelize.TEXT,

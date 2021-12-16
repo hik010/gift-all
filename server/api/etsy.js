@@ -20,9 +20,10 @@ const pythonPromise = data => {
   });
 };
 
-router.post('/', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    let dataFromPython = await pythonPromise([req.body.link]);
+    console.log(req.headers)
+    let dataFromPython = await pythonPromise([req.headers.link]);
     res.send(dataFromPython);
   } catch (err) {
     console.log(err)
