@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getAllLists } from '../store/all_wishlists';
 import { getWishlist, setWishlist } from '../store/single_wishlist';
 import AddItemForm from './AddItemForm';
+import SingleWishItem from './SingleWishItem';
 
 const MyWishlist = () => {
   const allLists = useSelector((state) => state.allLists);
@@ -37,17 +38,7 @@ const MyWishlist = () => {
       {selectedList.items ? (
         <div className="list-items d-flex mt-3 justify-content-start">
           {selectedList.items.map((item) => (
-            <div className="single-item d-flex" key={item.id}>
-              <img style={{ width: '15%' }} src={item.image}></img>
-              <section className="item-info ms-2 w-25">
-                <a href={item.url}>
-                  <h5>{item.title}</h5>
-                </a>
-                <p id="price">${item.price}</p>
-                <p id="rating">Star: {item.rating}</p>
-                <p>{item.num_sales}</p>
-              </section>
-            </div>
+            <SingleWishItem key={item.id} item={item} />
           ))}
           <button
             className="btn btn-success"
@@ -57,7 +48,6 @@ const MyWishlist = () => {
           >
             Add
           </button>
-          {/* <AddItemForm /> */}
           <div className="modal fade" id="addItem" tabIndex="-1">
             <div className="modal-dialog">
               <div className="modal-content">
