@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { spawn } = require('child_process');
 const path = require('path');
+const Item = require('../db/models/Item');
 
 module.exports = router;
 
@@ -22,9 +23,18 @@ const pythonPromise = data => {
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log(req.headers)
+    // check if this is inside database already
+    let etsy_product_id = req.headers.link.split('listing/')[1].split('/')[0];
+
+    // use redis here later
+    let found = await Item.findOne({
+      where: {product_id : etsy_product_id}
+    });
+    if (found) return res.json(found);
+
+    // if not found yet, scrape from etsy
     let dataFromPython = await pythonPromise([req.headers.link]);
-    res.send(dataFromPython);
+    res.json(JSON.parse(dataFromPython));
   } catch (err) {
     console.log(err)
     next(err);

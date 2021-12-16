@@ -3,6 +3,7 @@ const { requireToken } = require('./gatekeeping');
 const {
   models: { Item, Wishlist_Item },
 } = require('../db');
+const Wishlist = require('../db/models/Wishlist');
 
 const router = require('express').Router();
 
@@ -30,13 +31,15 @@ router.post('/', requireToken, async (req, res, next) => {
       note: itemData.note,
     });
 
-    res.json(new_entry);
+    let itemReturn = {...item.dataValues, wishlist_item : new_entry}
+
+    res.json(itemReturn);
   } catch (e) {
     next(e);
   }
 });
 
-// PUT /api/wishlist-item
+// PUT /api/wishlist-item update quantity or note
 router.put('/', requireToken, async (req, res, next) => {
   try {
     // delete one entry, need to know item id and wishlist id
@@ -59,11 +62,11 @@ router.put('/', requireToken, async (req, res, next) => {
 router.delete('/', requireToken, async (req, res, next) => {
   try {
     // delete one entry, need to know item id and wishlist id
-    const { wishlistId, itemId } = req.body;
+    const { wishlistId, itemData } = req.body;
     let toDestroy = await Wishlist_Item.findOne({
       where: {
         wishlistId,
-        itemId,
+        itemId : itemData.id,
       },
     });
 

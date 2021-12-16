@@ -17,7 +17,7 @@ const Item = db.define('item', {
     allowNull: false,
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.STRING,
     allowNull: false,
   },
   rating: {

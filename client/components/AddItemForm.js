@@ -1,4 +1,34 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+
+const AddLinkForm = ({ formType, fetchData }) => {
+  let [data, setData] = useState({ link: '' });
+
+  const handleChange = (event) => {
+    setData({ [event.target.name]: event.target.value });
+  };
+
+  return (
+    <div className="form-floating mt-3">
+      <input
+        name="link"
+        className="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        value={data.link}
+        onChange={handleChange}
+      />
+      <label htmlFor="floatingInput">{formType + ' Link'}</label>
+      <button
+        name={formType}
+        className="btn btn-primary"
+        onClick={() => fetchData(formType, data.link)}
+      >
+        Add
+      </button>
+    </div>
+  );
+};
 
 const AddItemForm = () => {
   const [formType, setFormType] = useState('');
@@ -7,17 +37,24 @@ const AddItemForm = () => {
     if (event.target.name === 'formType') {
       setFormType(event.target.value);
     }
-    console.log(formType);
+  };
+
+  const fetchData = async (name, link) => {
+    try {
+      console.log(link);
+      let { data } = await axios.get(`/api/${name.toLowerCase()}`, {
+        link: link,
+      });
+      console.log(data);
+    } catch (e) {
+      console.error('error in fetchData', fetchData);
+    }
   };
 
   const formFields = () => {
     switch (formType) {
       case 'Etsy':
-        return (<div className="form-floating mt-3">
-        <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
-        <label htmlFor="floatingInput">{formType + ' Link'}</label>
-        <button name={formType} className='btn btn-primary'>Add</button>
-      </div>);
+        return <AddLinkForm formType={formType} fetchData={fetchData} />
       case 'Google Shopping':
         return 'google shopping form';
       case 'custom':

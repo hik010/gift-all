@@ -22,8 +22,8 @@ def etsy_single(etsy_link):
   data = {}
   data['product_id'] = listing_id
   data['title'] = title
-  data['price'] = float(price.split('$')[1])
-  data['num_sales'] = int(numSales.split(' ')[0].replace(',',''))
+  data['price'] = (price.split('$')[1])
+  data['num_sales'] = (numSales.split(' ')[0].replace(',',''))
   data['rating'] = float(ratings)
   data['image'] = first_img
   data['link'] = etsy_link

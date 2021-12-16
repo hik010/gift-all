@@ -10,6 +10,7 @@ User.hasMany(Wishlist)
 Wishlist.belongsTo(User);
 
 Wishlist.belongsToMany(Item, {through: Wishlist_Item})
+Item.belongsToMany(Wishlist, {through: Wishlist_Item})
 
 
 
