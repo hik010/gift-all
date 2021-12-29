@@ -1,9 +1,9 @@
-NODE_ENV=development
-JWT=shh
+NODE_ENV=
+JWT=
 
 # Datavase credendials
-DB_USERNAME=hyo.kim
-DB_PASSWORD=root
-DB_DATABASE=stackathon
-DB_HOST=localhost
-DB_DIALECT=postgres
+DB_USERNAME=
+DB_PASSWORD=
+DB_DATABASE=
+DB_HOST=
+DB_DIALECT=
