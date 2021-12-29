@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store';
 import history from './history'
 
-import clientSocket from './socket';
+// import clientSocket from './socket';
 import '../public/bootstrap.min.css';
 import '../public/style.css';
 
