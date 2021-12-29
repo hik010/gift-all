@@ -3,8 +3,10 @@ const app = express();
 const path = require('path');
 const redis = require('redis');
 const socketio = require('socket.io');
-const seed = require('../script/seed');
 
+require('dotenv').config('../.env');
+
+const seed = require('../script/seed');
 const router = require('./api');
 const {db} = require('./db')
 const redisClient = redis.createClient();

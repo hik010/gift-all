@@ -7,7 +7,7 @@
     "build": "webpack",
     "build-dev": "npm run build -- --watch --mode=development",
     "start-dev": "npm run build-dev & npm run start-server",
-    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "start": "node server",
     "seed": "node script/seed.js",
     "start-dev:seed": "SEED=true npm run start:dev"
@@ -30,6 +30,7 @@
     "@googlemaps/react-wrapper": "^1.1.15",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "fast-equals": "^2.0.3",
     "jsonwebtoken": "^8.5.1",
