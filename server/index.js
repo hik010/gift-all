@@ -4,7 +4,7 @@ const path = require('path');
 const redis = require('redis');
 const socketio = require('socket.io');
 
-require('dotenv').config('../.env');
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const seed = require('../script/seed');
 const router = require('./api');

@@ -1,13 +1,16 @@
 const Sequelize = require('sequelize');
 const pkg = require('../../package.json');
-const { parsed } = require('dotenv').config('../../.env');
+const path = require('path');
+const { parsed } = require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const databaseName =
   pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
+console.log(process.env)
+
 const config = {
   logging: false,
-  dialect: parsed.DB_DIALECT
+  dialect: process.env.DB_DIALECT
 };
 
 if (process.env.LOGGING === 'true') {
@@ -28,9 +31,9 @@ if (process.env.NODE_ENV === 'production') {
 //   config
 // );
 const db = new Sequelize(
-  parsed.DB_DATABASE,
-  parsed.DB_USERNAME,
-  parsed.DB_PASSWORD,
+  process.env.DB_DATABASE,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
   config
 );
 module.exports = db;

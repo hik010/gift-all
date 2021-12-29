@@ -19,7 +19,7 @@ router.get('/', requireToken, async(req,res,next) => {
 })
 
 // GET /api/wishlist/:id
-router.get('/:id', requireToken, async(req,res,next) => {
+router.get('/:id', async(req,res,next) => {
   try {
     const singleList = await Wishlist.findOne({
       where: {id: req.params.id},
