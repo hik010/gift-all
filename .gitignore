@@ -9,3 +9,4 @@ package-lock.json
 
 secrets.js
 .env
+venv
