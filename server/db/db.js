@@ -6,7 +6,6 @@ const { parsed } = require('dotenv').config({ path: path.join(__dirname, '..', '
 const databaseName =
   pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
-console.log(process.env)
 
 const config = {
   logging: false,
