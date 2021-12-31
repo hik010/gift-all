@@ -7,7 +7,7 @@ module.exports = router;
 
 const pythonPromise = data => {
   let scriptPath = path.join(__dirname, '..', '..', 'script', 'scrape.py');
-  let pythonPath = 'python'
+  let pythonPath = 'python3'
   return new Promise((resolve, reject) => {
     const python = spawn(pythonPath, [scriptPath, ...data]);
 
