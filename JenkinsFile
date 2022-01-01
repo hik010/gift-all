@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                sh '''
-                npm install
-                npm run build
-                '''
+                // sh '''
+                // sudo npm install
+                // npm run build
+                // '''
                 echo 'default workspace'
-                sh "pwd"
+                // sh "pwd"
             }
         }
     }
