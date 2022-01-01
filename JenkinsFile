@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Testing github hooks2'
+                echo 'Testing github hooks3'
             }
         }
     }
