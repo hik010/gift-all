@@ -1,15 +1,14 @@
 pipeline {
-    agent any
-
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
+    agent {
+      node {
+        label 'my-defined-label'
+        customWorkspace '/home/ubuntu'
+      }
     }
-
     stages {
         stage('Hello') {
             steps {
-                echo 'Testing github hooks on both jobs'
+                echo 'Giving a custom workspace'
             }
         }
     }
