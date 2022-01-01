@@ -1,14 +1,10 @@
 pipeline {
-    agent {
-      node {
-        label 'ubuntu'
-        customWorkspace '/home/ubuntu/apps/test'
-      }
-    }
+    agent any
     stages {
         stage('Hello') {
             steps {
-                echo 'Giving a custom workspace'
+                echo 'default workspace'
+                echo "$(pwd)"
             }
         }
     }
