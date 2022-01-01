@@ -1,7 +1,7 @@
 NODE_ENV=
 JWT=
 
-# Datavase credendials
+# Database credentials
 DB_USERNAME=
 DB_PASSWORD=
 DB_DATABASE=
