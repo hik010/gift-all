@@ -1,6 +1,7 @@
 pipeline {
     agent {
       node {
+        label any
         customWorkspace '/home/ubuntu'
       }
     }
