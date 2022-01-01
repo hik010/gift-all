@@ -3,6 +3,10 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
+                sh '''
+                npm install
+                npm run build
+                '''
                 echo 'default workspace'
                 echo "$(pwd)"
             }
