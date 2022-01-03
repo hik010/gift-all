@@ -13,7 +13,7 @@ pipeline {
                 // npm run build
                 // '''
                 echo 'default workspace'
-                // sh "pwd"
+                sh 'cd public'
             }
         }
     }
