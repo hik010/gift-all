@@ -1,3 +1,4 @@
+// To be used later on
 pipeline {
     agent {
         node {
@@ -8,12 +9,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                // sh '''
-                // sudo npm install
-                // npm run build
-                // '''
                 echo 'default workspace'
-                sh 'cd public'
             }
         }
     }
