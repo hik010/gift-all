@@ -26,6 +26,7 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
 
+// goes to api routes and auth routes
 app.use('/api', require('./api'));
 app.use('/auth', require('./auth'));
 

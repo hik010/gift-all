@@ -30,3 +30,17 @@ router.get('/:id', async(req,res,next) => {
     next(err);
   }
 })
+
+// DELETE /api/wishlist/:id => will delete the list + delete wishlist_items entries
+router.delete('/:id', async(req,res,next) => {
+  try {
+    const singleList = await Wishlist.findOne({
+      where: {id: req.params.id},
+      include: [Item]
+    });
+    await singleList.destroy();
+    res.json(singleList);
+  } catch (err) {
+    next(err);
+  }
+})
