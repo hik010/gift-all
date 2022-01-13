@@ -9,23 +9,22 @@ const router = require('express').Router();
 
 module.exports = router;
 
-// POST /api/wishlist-item
+// POST /api/wishlist-item => add an item to list
 router.post('/', requireToken, async (req, res, next) => {
   try {
     // create item with item data
     const { wishlistId, itemData } = req.body;
-    // if itemData.id exsits, no need to create
     let item;
+    // if itemData.id exists, no need to create, created in etsy.js
     if (!itemData.id) {
       item = await Item.create(itemData);
-    } else item = itemData;
+    } else item = itemData; //if custom item -> create
 
     // create entry in wishlist-items
     let new_entry = await Wishlist_Item.create({
       itemId: item.id,
       wishlistId: wishlistId,
-      // quantity: itemData.quantity,
-      // note: itemData.note,
+      quantity: itemData.quantity || 1,
     });
 
     let itemReturn = { ...item.dataValues, wishlist_item: new_entry };
@@ -37,7 +36,7 @@ router.post('/', requireToken, async (req, res, next) => {
   }
 });
 
-// PUT /api/wishlist-item update quantity or note
+// PUT /api/wishlist-item update quantity
 router.put('/', requireToken, async (req, res, next) => {
   try {
     // delete one entry, need to know item id and wishlist id

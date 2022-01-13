@@ -45,6 +45,7 @@ async function seed() {
   console.log(`seeded successfully`);
 
   await Wishlist_Item.create({ wishlistId: 1, itemId: item.id, quantity: 2 });
+  await Wishlist_Item.create({ wishlistId: 2, itemId: item2.id, quantity: 1 });
 
   return {
     users: {

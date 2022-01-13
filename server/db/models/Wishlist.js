@@ -10,6 +10,24 @@ const Wishlist = db.define('wishlist', {
   type: {
     type: Sequelize.ENUM('private', 'public'),
     defaultValue: 'private'
+  },
+  receiver: {
+    type: Sequelize.ENUM('me', 'others'),
+    defaultValue: 'me'
+  },
+  date: {
+    type: Sequelize.DATE,
+  },
+  note: {
+    type: Sequelize.TEXT,
+  },
+  occasion: {
+    type: Sequelize.STRING,
+    defaultValue: 'misc'
+  },
+  occurrence: {
+    type: Sequelize.ENUM('one-time', 'monthly', 'yearly'),
+    defaultValue: 'one-time'
   }
 })
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CustomItem from './forms/CustomItem';
 import SourceLinkForm from './forms/SourceLink';
 import SourceSelectForm from './forms/SourceSelect';
 
@@ -19,7 +20,7 @@ const AddItemForm = () => {
       case 'Google Shopping':
         return <SourceLinkForm formType={formType} />;
       case 'custom':
-        return 'custom form';
+        return <CustomItem formType={formType}/>;
     }
   };
 

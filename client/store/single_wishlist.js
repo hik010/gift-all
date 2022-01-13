@@ -46,7 +46,6 @@ export const addItemThunk = (itemData) => {
     try {
       if (token) {
         let wishlistId = getState().singleWishlist.id;
-        console.log(wishlistId)
         const res = await axios.post(
           `/api/wishlist-item`,
           { wishlistId, itemData },
