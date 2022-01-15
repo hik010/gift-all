@@ -3,7 +3,7 @@ const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
-// const { validate } = require('webpack/node_modules/schema-utils');
+
 const Wishlist = require('./Wishlist');
 
 const SALT_ROUNDS = 5;

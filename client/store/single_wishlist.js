@@ -3,6 +3,7 @@ import { async } from 'regenerator-runtime';
 
 const SET_WISHLIST = 'SET_WISHLIST';
 const ADD_ITEM = 'ADD_ITEM';
+const DELETE_ITEM = 'DELETE_ITEM';
 
 const TOKEN = 'token';
 
@@ -19,6 +20,14 @@ const addItem = (newItem) => {
   return {
     type: ADD_ITEM,
     payload: newItem,
+  };
+};
+
+// deleting item to current wishlist
+const deleteItem = (deletedItemId) => {
+  return {
+    type: DELETE_ITEM,
+    payload: deletedItemId,
   };
 };
 
@@ -63,6 +72,32 @@ export const addItemThunk = (itemData) => {
   };
 };
 
+export const deleteItemThunk = (itemData) => {
+  return async (dispatch, getState) => {
+    const token = window.localStorage.getItem(TOKEN);
+    try {
+      if (token) {
+        console.log(token);
+        let wishlistId = getState().singleWishlist.id;
+        const { data } = await axios.delete(
+          '/api/wishlist-item',
+          {
+            headers: {
+              authorization: token,
+            },
+            data: {wishlistId, itemData},
+
+          }
+        );
+        dispatch(deleteItem(data.itemId));
+      }
+    } catch (err) {
+      console.error('err in deleteItemThunk', err);
+    }
+  };
+};
+
+// reducer
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_WISHLIST:
@@ -70,6 +105,10 @@ export default function (state = {}, action) {
     case ADD_ITEM: {
       let prevItems = state.items;
       return { ...state, items: [...prevItems, action.payload] };
+    }
+    case DELETE_ITEM: {
+      let newItems = state.items.filter((item) => item.id != action.payload);
+      return { ...state, items: newItems };
     }
     default:
       return state;

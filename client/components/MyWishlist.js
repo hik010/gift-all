@@ -14,7 +14,7 @@ const MyWishlist = () => {
   useEffect(() => {
     // get all my lists
     dispatch(getAllLists());
-  }, []);
+  }, [selectedList]);
 
   useEffect(() => {
     // get all my lists
@@ -29,7 +29,6 @@ const MyWishlist = () => {
       {JSON.stringify(allLists) !== '{}' ? (
         <select
           className="form-select w-25"
-          aria-label="Default select example"
         >
           {allLists.map((list) => (
             <option key={list.id} value={list.id}>

@@ -4,6 +4,7 @@ body,
   height: 90%;
   width: 95%;
   margin: 0;
+  --main-bg-color: #B43509;
 }
 /*
 label,
@@ -23,3 +24,16 @@ input {
 } */
 
 /* .single-item */
+.delete-button {
+  padding: 0 0.3rem;
+  display: none;
+}
+
+.single-item:hover .delete-button  {
+  display: inline-block;
+}
+
+.delete-icon {
+  font-size: 1rem;
+  color: var(--main-bg-color)
+}

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const pkg = require('../../package.json');
 const path = require('path');
-const { parsed } = require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
 const databaseName =
   pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
