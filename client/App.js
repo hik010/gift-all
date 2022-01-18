@@ -5,8 +5,8 @@ import RoutesContainer from './components/Routes'
 
 const App = () => {
   return (
-    <div id='app' className='container'>
-      <Navbar />
+    <div id='app'>
+      <Navbar/>
       <RoutesContainer />
     </div>
   )

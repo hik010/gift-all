@@ -1,9 +1,9 @@
 html,
 body,
 #root {
-  height: 90%;
-  width: 95%;
-  margin: 0;
+  /* height: 90%; */
+  /* width: 95%; */
+  /* margin: 5px 2rem; */
   --main-bg-color: #B43509;
 }
 /*
@@ -22,6 +22,17 @@ input {
   box-sizing: border-box;
   font-size: larger;
 } */
+
+/* Navbar */
+#navbar {
+
+}
+nav a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: white;
+}
+
 
 /* .single-item */
 .delete-button {

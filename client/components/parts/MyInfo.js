@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeAuth } from '../store';
+import { changeAuth } from '../../store';
 
 const MyInfo = ({ userData }) => {
   const [formState, setFormState] = useState(userData);
@@ -9,7 +9,6 @@ const MyInfo = ({ userData }) => {
 
   const handleChange = (event) => {
     setFormState({...formState, [event.target.name]: event.target.value})
-
   }
 
   const handleClick = (event) => {

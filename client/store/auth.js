@@ -39,8 +39,8 @@ export const me = () => async (dispatch) => {
       },
     });
     dispatch(setAuth(res.data));
-    if (window.location.pathname != '/home') {
-      window.location.replace(window.location.origin + '/home');
+    if (window.location.pathname != '/dashboard') {
+      window.location.replace(window.location.origin + '/dashboard');
     }
   }
 };

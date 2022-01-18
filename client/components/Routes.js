@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Login, Signup } from './AuthForm';
+import { Login, Signup } from './forms/AuthForm';
 import { connect } from 'react-redux';
-import { useParams, Switch, Navigate } from 'react-router-dom';
-import Home from './Home';
+import { useParams, } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { me } from '../store';
+import { MyDashboard } from './MyDashboard';
+import MyProfile from './MyProfile';
+import LandingPage from './LandingPage';
 
 const withRouter = WrappedComponent => props => {
   const params = useParams();
@@ -20,25 +23,32 @@ const withRouter = WrappedComponent => props => {
 };
 
 const RoutesContainer = props => {
+  const navigate = useNavigate();
   useEffect(() => {
     props.loadInitialData();
+    console.log(props)
+    console.log('rerender')
   }, []);
 
   return (
-    <div className='routes-container'>
+    <div className='routes-container px-4'>
       {props.isLoggedIn ? (
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<MyDashboard auth={props.auth}/>} />
+          <Route path="/profile" element={<MyProfile auth={props.auth}/>} />
+
         </Routes>
+
       ) : (
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       )}
 
-      {/* {props.isLoggedIn ? <Navigate to='/home' />: null} */}
+      {/* {props.isLoggedIn ? navigate('/home') : null} */}
     </div>
   );
 };
@@ -50,6 +60,7 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
+    auth: state.auth,
     isLoggedIn: !!state.auth.id,
   };
 };
