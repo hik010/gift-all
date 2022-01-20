@@ -16,11 +16,12 @@ const AuthForm = (props) => {
     const formName = evt.target.name;
     const email = evt.target.email.value;
     const password = evt.target.password.value;
+
     dispatch(authenticate(email, password, formName));
   };
 
   return (
-    <div id='auth-form' className='position:fixed'>
+    <div id="auth-form" className="position:fixed">
       <img
         src="/images/authpage.jpeg"
         className="img-fluid position-fixed"
@@ -30,25 +31,39 @@ const AuthForm = (props) => {
       <form
         onSubmit={handleSubmit}
         name={name}
-        className="pt-3 card"
+        className="pt-3 card position-absolute"
       >
-        <h1 className='m-auto'>{name}</h1>
+        <h1 className="m-auto">{name}</h1>
         <div>
-          <label htmlFor="email" className='form-label'>
+          <label htmlFor="email" className="form-label">
             Email
           </label>
-          <input name="email" type="text" placeholder='example@gmail.com' className='form-control'/>
+          <input
+            name="email"
+            type="text"
+            placeholder="example@gmail.com"
+            className="form-control"
+          />
         </div>
         <div>
-          <label htmlFor="password" className='form-label'>
-          Password
+          <label htmlFor="password" className="form-label">
+            Password
           </label>
-          <input name="password" type="password" placeholder='Password' className='form-control'/>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="form-control"
+          />
         </div>
-        <div className='m-auto'>
-          <button type="submit" className='btn btn-success'>{displayName}</button>
+        <div className="m-auto">
+          <button type="submit" className="btn btn-success">
+            {displayName}
+          </button>
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
+        {error && error.response && (
+          <div className="text-danger"> {error.response.data} </div>
+        )}
       </form>
     </div>
   );

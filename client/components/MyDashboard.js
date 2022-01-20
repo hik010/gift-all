@@ -15,7 +15,7 @@ export const MyDashboard = (props) => {
 
   return (
     <div>
-      <h3>My Dashboard</h3>
+      <div className='page-title' >My Dashboard</div>
       {auth && (
         <>
           <MyWishlist></MyWishlist>

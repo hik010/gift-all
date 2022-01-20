@@ -10,9 +10,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
   return (
     <div
       id="navbar"
-      className={"d-flex justify-content-between align-items-center px-4 pt-2 text-white bg-danger"}
+      className={"d-flex justify-content-between align-items-center indented py-2 text-white"}
     >
-      <h3>GiftAll</h3>
+      <h3 className='mb-0'>GiftAll</h3>
       <nav>
         {isLoggedIn ? (
           <div>

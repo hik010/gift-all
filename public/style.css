@@ -7,6 +7,7 @@ body,
   font-family: Myanmar MN;
   --main-bg-color: #B43509;
   --header-font-size: 3.5rem;
+  --page-title-font-size: 3rem;
 }
 /*
 label,
@@ -25,31 +26,47 @@ input {
   font-size: larger;
 } */
 
+/* Common */
+.indented {
+  padding: 0 2rem;
+}
+
+.page-title {
+  background-color: var(--main-bg-color);
+  padding: 4rem 2rem 0.5rem 2rem;
+  font-size: var(--page-title-font-size);
+  color: white;
+}
+
 /* Navbar */
 #navbar {
-
+  width: 100vw;
+  z-index: 3;
 }
 nav a {
-  margin: 0 5px;
+  margin: 0 0.5rem;
   text-decoration: none;
   color: white;
 }
 
+
+
 /* Landing Page */
 .landing-page img {
   z-index: -1;
+  height: 100vh;
+  width: 100vw;;
 }
+
 div#heading {
-  width: 35vw;
-  position: absolute;
+  width: 500px;
+
   top: 35%;
 }
 #heading h1 {
   font-size: var(--header-font-size);
   color: rgb(227, 227, 227);
   margin-bottom: 6%;
-
-
 }
 
 /* Auth Pages */
@@ -57,7 +74,6 @@ img[alt='gift'] {
   z-index: -1;
 }
 #auth-form form {
-  position: absolute;
   top: 30%;
   left: 40%;
   padding: 2rem;

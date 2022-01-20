@@ -39,9 +39,7 @@ export const me = () => async (dispatch) => {
       },
     });
     dispatch(setAuth(res.data));
-    if (window.location.pathname != '/dashboard') {
-      window.location.replace(window.location.origin + '/dashboard');
-    }
+
   }
 };
 
@@ -50,6 +48,9 @@ export const authenticate = (email, password, method) => async (dispatch) => {
     const res = await axios.post(`/auth/${method}`, { email, password });
     window.localStorage.setItem(TOKEN, res.data.token);
     dispatch(me());
+    if (window.location.pathname !== '/') {
+      window.location.replace(window.location.origin + '/');
+    }
   } catch (authError) {
     return dispatch(setAuth({ error: authError }));
   }

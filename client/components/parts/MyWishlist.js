@@ -24,7 +24,7 @@ const MyWishlist = () => {
   }, [Object.keys(allLists).length]);
 
   return (
-    <div className="my-wishlist">
+    <div className="my-wishlist indented">
       <h4 className="mt-5">My Wishlist</h4>
       {JSON.stringify(allLists) !== '{}' ? (
         <select
