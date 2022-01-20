@@ -4,7 +4,9 @@ body,
   /* height: 90%; */
   /* width: 95%; */
   /* margin: 5px 2rem; */
+  font-family: Myanmar MN;
   --main-bg-color: #B43509;
+  --header-font-size: 3.5rem;
 }
 /*
 label,
@@ -31,6 +33,42 @@ nav a {
   margin: 0 5px;
   text-decoration: none;
   color: white;
+}
+
+/* Landing Page */
+.landing-page img {
+  z-index: -1;
+}
+div#heading {
+  width: 35vw;
+  position: absolute;
+  top: 35%;
+}
+#heading h1 {
+  font-size: var(--header-font-size);
+  color: rgb(227, 227, 227);
+  margin-bottom: 6%;
+
+
+}
+
+/* Auth Pages */
+img[alt='gift'] {
+  z-index: -1;
+}
+#auth-form form {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  padding: 2rem;
+  border-radius: 20px;
+}
+#auth-form form div {
+  margin: 1rem 0;
+}
+#auth-form input {
+  width: 15rem;
+  background-color: #efefef;
 }
 
 

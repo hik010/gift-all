@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { async } from 'regenerator-runtime';
 
 const SET_WISHLIST = 'SET_WISHLIST';
 const ADD_ITEM = 'ADD_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
 
 const TOKEN = 'token';
+let test;
 
 // ACTION CREATORS
 export const setWishlist = (listObj) => {

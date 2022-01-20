@@ -20,26 +20,37 @@ const AuthForm = (props) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} name={name} className='pt-3'>
+    <div id='auth-form' className='position:fixed'>
+      <img
+        src="/images/authpage.jpeg"
+        className="img-fluid position-fixed"
+        alt="gift"
+      ></img>
+
+      <form
+        onSubmit={handleSubmit}
+        name={name}
+        className="pt-3 card"
+      >
+        <h1 className='m-auto'>{name}</h1>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
+          <label htmlFor="email" className='form-label'>
+            Email
           </label>
-          <input name="email" type="text" />
+          <input name="email" type="text" placeholder='example@gmail.com' className='form-control'/>
         </div>
         <div>
-          <label htmlFor="password">
-            <small>Password</small>
+          <label htmlFor="password" className='form-label'>
+          Password
           </label>
-          <input name="password" type="password" />
+          <input name="password" type="password" placeholder='Password' className='form-control'/>
         </div>
-        <div>
-          <button type="submit">{displayName}</button>
+        <div className='m-auto'>
+          <button type="submit" className='btn btn-success'>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-    </>
+    </div>
   );
 };
 

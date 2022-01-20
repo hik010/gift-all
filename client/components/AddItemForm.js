@@ -21,6 +21,8 @@ const AddItemForm = () => {
         return <SourceLinkForm formType={formType} />;
       case 'custom':
         return <CustomItem formType={formType}/>;
+      default:
+        return ''
     }
   };
 

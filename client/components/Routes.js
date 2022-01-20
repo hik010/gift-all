@@ -31,7 +31,7 @@ const RoutesContainer = props => {
   }, []);
 
   return (
-    <div className='routes-container px-4'>
+    <div className='routes-container px-5'>
       {props.isLoggedIn ? (
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -59,7 +59,7 @@ const RoutesContainer = props => {
 const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
-    // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
+    // Otherwise, state.auth will be an empty object, and state.auth.id will be falsy
     auth: state.auth,
     isLoggedIn: !!state.auth.id,
   };

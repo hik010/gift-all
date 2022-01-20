@@ -20,7 +20,7 @@ const SingleWishItem = ({ item }) => {
         <img className="w-100" src={item.image}></img>
       </div>
       <section className="item-info ms-2 w-50 position-relative">
-        <a href={item.link} target="_blank">
+        <a href={item.link} target="_blank" rel="noreferrer">
           <h5>{item.title}</h5>
         </a>
         <p id="price">${item.price}</p>
