@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteItemThunk } from '../store/single_wishlist';
+import { deleteItemThunk } from '../store/singleList';
 
 const SingleWishItem = ({ item }) => {
 

@@ -5,7 +5,6 @@ const ADD_ITEM = 'ADD_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
 
 const TOKEN = 'token';
-let test;
 
 // ACTION CREATORS
 export const setWishlist = (listObj) => {
@@ -98,6 +97,7 @@ export const deleteItemThunk = (itemData) => {
 };
 
 // reducer
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_WISHLIST:

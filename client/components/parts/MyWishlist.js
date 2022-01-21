@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getAllLists } from '../../store/all_wishlists';
-import { getWishlist, setWishlist } from '../../store/single_wishlist';
+import { getAllLists } from '../../store/allLists';
+import { getWishlist, setWishlist } from '../../store/singleList';
 import AddItemForm from '../AddItemForm';
 import SingleWishItem from '../SingleWishItem';
 
 const MyWishlist = () => {
   const allLists = useSelector((state) => state.allLists);
-  const selectedList = useSelector((state) => state.singleWishlist);
+  const selectedList = useSelector((state) => state.singleList);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItemThunk } from '../../store/single_wishlist';
+import { addItemThunk } from '../../store/singleList';
 
 const CustomItem = ({ formType }) => {
   let [data, setData] = useState({ title: '', price: '', link: '' });

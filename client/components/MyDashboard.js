@@ -8,10 +8,10 @@ import MyWishlist from './parts/MyWishlist';
  */
 export const MyDashboard = (props) => {
   const {auth} = props;
-  // useEffect(() => {
-  //   auth = useSelector((state) => state.auth);
-  //   console.log(auth);
-  // }, []);
+
+  useEffect(() => {
+    console.log('renderred dashboard')
+  },[])
 
   return (
     <div>

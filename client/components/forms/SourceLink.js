@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addItemThunk } from '../../store/single_wishlist';
+import { addItemThunk } from '../../store/singleList';
 import SingleWishItem from '../SingleWishItem';
 
 const SourceLinkForm = ({ formType }) => {
