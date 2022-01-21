@@ -27,8 +27,7 @@ router.post('/', requireToken, async (req, res, next) => {
       quantity: itemData.quantity || 1,
     });
 
-    let itemReturn = { ...item.dataValues, wishlist_item: new_entry };
-
+    let itemReturn = { ...item, wishlist_item: {...new_entry} };
     res.json(itemReturn);
   } catch (e) {
     console.log(e);

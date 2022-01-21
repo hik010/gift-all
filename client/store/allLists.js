@@ -12,12 +12,12 @@ const setAllLists = (data) => {
   }
 }
 
-export const getAllLists = () => {
+export const getAllLists = (receiver) => {
   return async(dispatch) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
-        const res = await axios.get(`/api/wishlist`, {
+        const res = await axios.get(`/api/wishlist/${receiver}`, {
           headers: {
             authorization: token
           }

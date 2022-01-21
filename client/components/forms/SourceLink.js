@@ -46,8 +46,10 @@ const SourceLinkForm = ({ formType }) => {
           if (!data.title) fetchData(formType, data.link);
           else {
             //  actually add to wishlist
-            delete data['num_sales']
+            delete data['num_sales'];
+
             dispatch(addItemThunk(data));
+            setData({ link: '' });
           }
         }}
       >

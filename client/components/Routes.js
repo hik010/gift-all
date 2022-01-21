@@ -31,7 +31,6 @@ const RoutesContainer = (props) => {
 
   useEffect(() => {
     let navbar = document.querySelector('#navbar');
-    console.log(navbar);
     if (location.pathname === '/') {
       navbar.classList.remove('bg-danger');
       navbar.classList.add('position-fixed');

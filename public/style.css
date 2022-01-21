@@ -5,9 +5,11 @@ body,
   /* width: 95%; */
   /* margin: 5px 2rem; */
   font-family: Myanmar MN;
-  --main-bg-color: #B43509;
+  --main-bg-color: #b43509;
+  --success-color: #729263;
   --header-font-size: 3.5rem;
   --page-title-font-size: 3rem;
+  box-sizing: border-box;
 }
 /*
 label,
@@ -49,13 +51,11 @@ nav a {
   color: white;
 }
 
-
-
 /* Landing Page */
 .landing-page img {
   z-index: -1;
   height: 100vh;
-  width: 100vw;;
+  width: 100vw;
 }
 
 div#heading {
@@ -87,18 +87,68 @@ img[alt='gift'] {
   background-color: #efefef;
 }
 
+/* Dashboard */
+
+section.lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+div.list-card {
+  width: 60%;
+
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 #00000033;
+  transition: 0.3s;
+  border-left-style: solid;
+  border-left-width: 0.5rem;
+  border-left-color: rgb(116, 165, 208);
+  border-radius: 5px;
+
+}
+
+.list-card:hover {
+  box-shadow: 0 8px 16px 0 rgb(116, 165, 208);
+}
+
+.date-tag {
+  margin: 0 1rem;
+  padding: 0.1rem 0.5rem;
+  font-size: smaller;
+  background-color: #96837c;
+  color: white;
+  border: 1px solid #96837c;
+  border-radius: 40px
+}
+
+.buttons-group {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.buttons-group button {
+  margin: 0 0.2rem;
+  padding: 0 0.5rem;
+  color: white;
+  border-radius: 10px;
+}
 
 /* .single-item */
 .delete-button {
   padding: 0 0.3rem;
   display: none;
+  text-decoration:;
 }
 
-.single-item:hover .delete-button  {
+.single-item:hover .delete-button {
   display: inline-block;
 }
 
 .delete-icon {
   font-size: 1rem;
-  color: var(--main-bg-color)
+  color: var(--main-bg-color);
 }

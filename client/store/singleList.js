@@ -53,7 +53,7 @@ export const addItemThunk = (itemData) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
-        let wishlistId = getState().singleWishlist.id;
+        let wishlistId = getState().singleList.id;
         const res = await axios.post(
           `/api/wishlist-item`,
           { wishlistId, itemData },
@@ -63,6 +63,7 @@ export const addItemThunk = (itemData) => {
             },
           }
         );
+        console.log(res.data);
         dispatch(addItem(res.data));
       }
     } catch (err) {
@@ -77,7 +78,7 @@ export const deleteItemThunk = (itemData) => {
     try {
       if (token) {
         console.log(token);
-        let wishlistId = getState().singleWishlist.id;
+        let wishlistId = getState().singleList.id;
         const { data } = await axios.delete(
           '/api/wishlist-item',
           {
