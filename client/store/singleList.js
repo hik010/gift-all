@@ -1,23 +1,23 @@
 import axios from 'axios';
 
-const SET_WISHLIST = 'SET_WISHLIST';
-const CLEAR_WISHLIST = 'CLEAR_WISHLIST';
+const SET_SINGLELIST = 'SET_SINGLELIST';
+const CLEAR_SINGLELIST = 'CLEAR_SINGLELIST';
 const ADD_ITEM = 'ADD_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
 
 const TOKEN = 'token';
 
 // ACTION CREATORS
-export const setWishlist = (listObj) => {
+export const setSingleList = (listObj) => {
   return {
-    type: SET_WISHLIST,
+    type: SET_SINGLELIST,
     payload: listObj,
   };
 };
 
-export const clearWishlist = () => {
+export const clearSingleList = () => {
   return {
-    type: CLEAR_WISHLIST,
+    type: CLEAR_SINGLELIST,
   };
 };
 
@@ -37,7 +37,7 @@ const deleteItem = (deletedItemId) => {
   };
 };
 
-export const getWishlist = (list) => {
+export const getSingleList = (list) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
@@ -47,10 +47,10 @@ export const getWishlist = (list) => {
             authorization: token,
           },
         });
-        dispatch(setWishlist(res.data));
+        dispatch(setSingleList(res.data));
       }
     } catch (err) {
-      console.error('err in getWishlist', err);
+      console.error('err in getSingleList', err);
     }
   };
 };
@@ -103,9 +103,9 @@ export const deleteItemThunk = (itemData) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = {}, action) {
   switch (action.type) {
-    case SET_WISHLIST:
+    case SET_SINGLELIST:
       return action.payload;
-    case CLEAR_WISHLIST:
+    case CLEAR_SINGLELIST:
       return {};
     case ADD_ITEM: {
       let prevItems = state.items;

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addItemThunk } from '../../store/singleList';
-import SingleWishItem from '../SingleWishItem';
+import SingleItem from '../parts/SingleItem';
 
 const SourceLinkForm = ({ formType }) => {
   let [data, setData] = useState({ link: '' });
@@ -37,7 +37,7 @@ const SourceLinkForm = ({ formType }) => {
       />
       <label htmlFor="floatingInput">{formType + ' Link'}</label>
 
-      {data.title && <SingleWishItem item={data} />}
+      {data.title && <SingleItem item={data} />}
 
       <button
         name={formType}

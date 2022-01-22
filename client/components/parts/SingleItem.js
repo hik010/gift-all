@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteItemThunk } from '../store/singleList';
+import { deleteItemThunk } from '../../store/singleList';
 
-const SingleWishItem = ({ item }) => {
+const SingleItem = ({ item }) => {
 
   const dispatch = useDispatch();
   const handleDelete = () => {
@@ -37,4 +37,4 @@ const SingleWishItem = ({ item }) => {
     </div>
   );
 };
-export default SingleWishItem;
+export default SingleItem;
