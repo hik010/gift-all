@@ -15,10 +15,14 @@ router.post('/', requireToken, async (req, res, next) => {
     // create item with item data
     const { wishlistId, itemData } = req.body;
     let item;
-    // if itemData.id exists, no need to create, created in etsy.js
+    // if itemData.id exists, no need to create, already exists
+    //if custom item -> create
     if (!itemData.id) {
-      item = await Item.create(itemData);
-    } else item = itemData; //if custom item -> create
+      let createdItem = await Item.create(itemData);
+      item = createdItem.dataValues;
+    } else {
+      item = itemData;
+    }
 
     // create entry in wishlist-items
     let new_entry = await Wishlist_Item.create({
@@ -27,7 +31,7 @@ router.post('/', requireToken, async (req, res, next) => {
       quantity: itemData.quantity || 1,
     });
 
-    let itemReturn = { ...item, wishlist_item: {...new_entry} };
+    let itemReturn = { ...item, wishlist_item: { ...new_entry } };
     res.json(itemReturn);
   } catch (e) {
     console.log(e);

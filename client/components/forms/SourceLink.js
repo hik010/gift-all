@@ -39,6 +39,7 @@ const SourceLinkForm = ({ formType }) => {
       <label htmlFor="floatingInput">{formType + ' Link'}</label>
 
       {data.title && <SingleWishItem item={data} />}
+
       <button
         name={formType}
         className="btn btn-primary"
@@ -47,7 +48,6 @@ const SourceLinkForm = ({ formType }) => {
           else {
             //  actually add to wishlist
             delete data['num_sales'];
-
             dispatch(addItemThunk(data));
             setData({ link: '' });
           }

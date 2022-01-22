@@ -11,10 +11,16 @@ const MyWishlist = ({ receiver }) => {
   const singleList = useSelector((state) => state.singleList);
   const dispatch = useDispatch();
 
+  // get all my lists (either for me or for others)
   useEffect(() => {
-    // get all my lists (either for me or for others)
     dispatch(getAllLists(receiver));
   }, [receiver]);
+
+  // once allLists loads -> expand first list
+  useEffect(() => {
+    if (Object.keys(singleList).length !== 0) return;
+    allLists.length > 0 && dispatch(setWishlist(allLists[0]));
+  }, [allLists.length]);
 
   const clickCard = (event) => {
     if (event.target.classList.contains('list-card')) {
@@ -59,7 +65,7 @@ const ListItems = ({ list, index }) => {
   return (
     <>
       {singleList.items.length !== 0 ? (
-        <div className="list-items d-flex mt-3 justify-content-start ">
+        <div className="list-items d-flex mt-3 justify-content-start">
           {singleList.items.map((item) => (
             <SingleWishItem key={item.id} item={item} />
           ))}
