@@ -84,7 +84,6 @@ export const deleteItemThunk = (itemData) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
-        console.log(token);
         let wishlistId = getState().singleList.id;
         const { data } = await axios.delete('/api/wishlist-item', {
           headers: {

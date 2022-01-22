@@ -19,7 +19,6 @@ const SourceLinkForm = ({ formType }) => {
           link,
         },
       });
-      console.log(data);
       setData(data);
     } catch (e) {
       console.error('error in fetchData', fetchData);

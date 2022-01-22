@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import CustomItem from './forms/CustomItem';
-import SourceLinkForm from './forms/SourceLink';
-import SourceSelectForm from './forms/SourceSelect';
+import CustomItem from '../forms/CustomItem';
+import SourceLinkForm from '../forms/SourceLink';
+import SourceSelectForm from '../forms/SourceSelect';
 
 const AddItemForm = () => {
   const [formType, setFormType] = useState('');
@@ -11,7 +11,6 @@ const AddItemForm = () => {
       setFormType(event.target.value);
     }
   };
-
 
   const formFields = () => {
     switch (formType) {

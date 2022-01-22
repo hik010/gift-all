@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllLists } from '../../store/allLists';
-import { clearWishlist, getWishlist, setWishlist } from '../../store/singleList';
-import AddItemForm from '../AddItemForm';
+import {
+  clearWishlist,
+  setWishlist,
+} from '../../store/singleList';
 import SingleWishItem from '../SingleWishItem';
+import Modal from './AddModal';
 
 const MyWishlist = ({ receiver }) => {
   const allLists = useSelector((state) => state.allLists);
@@ -15,17 +18,15 @@ const MyWishlist = ({ receiver }) => {
   useEffect(() => {
     async function loadLists() {
       await dispatch(getAllLists(receiver));
-    };
+    }
     loadLists();
     // dispatch(setWishlist(allLists[0]));
-
   }, [receiver]);
 
   const clickCard = (event, chosenList) => {
-    if(chosenList.id !== singleList.id) {
+    if (chosenList.id !== singleList.id) {
       dispatch(setWishlist(chosenList));
-    } else {
-      console.log('clear singleList')
+    } else if (event.target.id === 'top-bar') {
       dispatch(clearWishlist());
     }
   };
@@ -41,24 +42,27 @@ const MyWishlist = ({ receiver }) => {
               data-list-index={index}
               onClick={(event) => clickCard(event, list)}
             >
-              <h4 className="d-inline">{list.name}</h4>
-              {list.date && (
-                <span className="date-tag">
-                  {list.date.toString().slice(0, 10)}
-                </span>
-              )}
+              <div id="top-bar">
+                <h4 className="d-inline">{list.name}</h4>
+                {list.date && (
+                  <span className="date-tag">
+                    {list.date.toString().slice(0, 10)}
+                  </span>
+                )}
+              </div>
 
-              <ShowItems list={list} index={index} />
+              <ListContent list={list} index={index} />
             </div>
           ))}
         </section>
       ) : null}
-      <AddModal />
+      <Modal id='addItem' title='Add an item'/>
+      <Modal id='deleteList' title='Delete this list'/>
     </div>
   );
 };
 
-const ShowItems = ({ list, index }) => {
+const ListContent = ({ list, index }) => {
   const singleList = useSelector((state) => state.singleList);
   if (singleList.id !== list.id) return '';
 
@@ -79,8 +83,6 @@ const ShowItems = ({ list, index }) => {
           type="button"
           data-bs-toggle="modal"
           data-bs-target="#addItem"
-          data-list-index={index}
-          // onClick={clickButton}
         >
           Add
         </button>
@@ -88,50 +90,12 @@ const ShowItems = ({ list, index }) => {
           className="btn bg-danger"
           type="button"
           data-bs-toggle="modal"
-          data-bs-target="#deleteItem"
-          data-list-index={index}
-          // onClick={clickButton}
+          data-bs-target="#deleteList"
         >
           Delete
         </button>
       </div>
     </>
-  );
-};
-
-const AddModal = () => {
-  return (
-    <div className="modal fade" id="addItem" tabIndex="-1">
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
-              Add an Item
-            </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
-          </div>
-          <div className="modal-body">
-            <AddItemForm />
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            {/* <button type="button" className="btn btn-primary">
-                Save changes
-              </button> */}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
