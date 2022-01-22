@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getAllLists } from '../../store/allLists';
-import { getWishlist, setWishlist } from '../../store/singleList';
+import { clearWishlist, getWishlist, setWishlist } from '../../store/singleList';
 import AddItemForm from '../AddItemForm';
 import SingleWishItem from '../SingleWishItem';
 
@@ -13,20 +13,20 @@ const MyWishlist = ({ receiver }) => {
 
   // get all my lists (either for me or for others)
   useEffect(() => {
-    dispatch(getAllLists(receiver));
+    async function loadLists() {
+      await dispatch(getAllLists(receiver));
+    };
+    loadLists();
+    // dispatch(setWishlist(allLists[0]));
+
   }, [receiver]);
 
-  // once allLists loads -> expand first list
-  useEffect(() => {
-    if (Object.keys(singleList).length !== 0) return;
-    allLists.length > 0 && dispatch(setWishlist(allLists[0]));
-  }, [allLists.length]);
-
-  const clickCard = (event) => {
-    if (event.target.classList.contains('list-card')) {
-      let selectedIndex = event.target.dataset.listIndex;
-      // reveal items now
-      dispatch(setWishlist(allLists[selectedIndex]));
+  const clickCard = (event, chosenList) => {
+    if(chosenList.id !== singleList.id) {
+      dispatch(setWishlist(chosenList));
+    } else {
+      console.log('clear singleList')
+      dispatch(clearWishlist());
     }
   };
 
@@ -39,7 +39,7 @@ const MyWishlist = ({ receiver }) => {
               className="list-card position-relative"
               key={list.id}
               data-list-index={index}
-              onClick={clickCard}
+              onClick={(event) => clickCard(event, list)}
             >
               <h4 className="d-inline">{list.name}</h4>
               {list.date && (
@@ -48,7 +48,7 @@ const MyWishlist = ({ receiver }) => {
                 </span>
               )}
 
-              <ListItems list={list} index={index} />
+              <ShowItems list={list} index={index} />
             </div>
           ))}
         </section>
@@ -58,7 +58,7 @@ const MyWishlist = ({ receiver }) => {
   );
 };
 
-const ListItems = ({ list, index }) => {
+const ShowItems = ({ list, index }) => {
   const singleList = useSelector((state) => state.singleList);
   if (singleList.id !== list.id) return '';
 

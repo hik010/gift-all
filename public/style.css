@@ -97,6 +97,10 @@ section.lists-container {
   align-items: center;
 }
 
+.chosen {
+  border: 2px solid #766071;
+}
+
 div.list-card {
   width: 60%;
 

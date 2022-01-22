@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const SET_WISHLIST = 'SET_WISHLIST';
+const CLEAR_WISHLIST = 'CLEAR_WISHLIST';
 const ADD_ITEM = 'ADD_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
 
@@ -11,6 +12,12 @@ export const setWishlist = (listObj) => {
   return {
     type: SET_WISHLIST,
     payload: listObj,
+  };
+};
+
+export const clearWishlist = () => {
+  return {
+    type: CLEAR_WISHLIST,
   };
 };
 
@@ -79,16 +86,12 @@ export const deleteItemThunk = (itemData) => {
       if (token) {
         console.log(token);
         let wishlistId = getState().singleList.id;
-        const { data } = await axios.delete(
-          '/api/wishlist-item',
-          {
-            headers: {
-              authorization: token,
-            },
-            data: {wishlistId, itemData},
-
-          }
-        );
+        const { data } = await axios.delete('/api/wishlist-item', {
+          headers: {
+            authorization: token,
+          },
+          data: { wishlistId, itemData },
+        });
         dispatch(deleteItem(data.itemId));
       }
     } catch (err) {
@@ -103,6 +106,8 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_WISHLIST:
       return action.payload;
+    case CLEAR_WISHLIST:
+      return {};
     case ADD_ITEM: {
       let prevItems = state.items;
       return { ...state, items: [...prevItems, action.payload] };

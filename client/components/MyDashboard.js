@@ -12,9 +12,12 @@ export const MyDashboard = (props) => {
   const [receiver, setReceiver] = useState('me');
 
   const changeReceiver = (e) => {
-    console.dir(e.target)
-    console.log(e.target.title);
+    let before = document.querySelector(`span[title=${receiver}]`);
+    let chosen = document.querySelector(`span[title=${e.target.title}]`)
+    before.classList.remove('chosen')
     setReceiver(e.target.title);
+    chosen.classList.add('chosen');
+
   };
 
   return (
@@ -24,10 +27,14 @@ export const MyDashboard = (props) => {
         className="d-flex justify-content-center mt-4"
         style={{ gap: '50px' }}
       >
-        <span onClick={changeReceiver} title="me">
+        <span
+          onClick={changeReceiver}
+          className='fs-4 px-2 chosen'
+          title="me"
+        >
           For Me
         </span>
-        <span onClick={changeReceiver} title="others">
+        <span onClick={changeReceiver} className='fs-4 px-2' title="others">
           For Others
         </span>
       </section>
