@@ -17,6 +17,7 @@ const Wishlist = db.define('wishlist', {
   },
   date: {
     type: Sequelize.DATE,
+    defaultValue: null
   },
   note: {
     type: Sequelize.TEXT,

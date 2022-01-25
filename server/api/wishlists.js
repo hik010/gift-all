@@ -50,12 +50,14 @@ router.post('/', requireToken, async (req, res, next) => {
   try {
     // make a list for me by default
     // make a list for someone else
+    console.log(req.body);
     const singleList = await Wishlist.create({
       ...req.body,
       userId: req.user.id,
     });
     res.json(singleList);
   } catch (err) {
+    console.log('error in creating', err);
     next(err);
   }
 });
@@ -77,10 +79,10 @@ router.post('/', requireToken, async (req, res, next) => {
 // });
 
 // DELETE /api/wishlist/:id => will delete the list + delete wishlist_items entries
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, async (req, res, next) => {
   try {
     const singleList = await Wishlist.findOne({
-      where: { id: req.params.id },
+      where: { id: req.params.id, userId: req.user.id },
       include: [Item],
     });
     await singleList.destroy();

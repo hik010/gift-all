@@ -1,5 +1,6 @@
 import React from 'react';
 import AddListForm from '../forms/AddList';
+import DeleteList from '../forms/DeleteList';
 import AddItemForm from './AddItemForm';
 
 const Modal = ({ id, title, receiver }) => {
@@ -8,7 +9,7 @@ const Modal = ({ id, title, receiver }) => {
       case 'addItem':
         return <AddItemForm />;
       case 'deleteList':
-        return 'Delete this list?';
+        return <DeleteList />;
       case 'addList':
         return <AddListForm receiver={receiver}/>
       default:
@@ -31,18 +32,18 @@ const Modal = ({ id, title, receiver }) => {
             ></button>
           </div>
           <div className="modal-body">{getModalContent()}</div>
-          <div className="modal-footer">
-            <button
+          {/* <div className="modal-footer"> */}
+            {/* <button
               type="button"
               className="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Close
-            </button>
+            </button> */}
             {/* <button type="button" className="btn btn-primary">
                 Save changes
               </button> */}
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </div>

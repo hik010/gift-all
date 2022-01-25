@@ -49,7 +49,7 @@ const MyWishlist = ({ receiver }) => {
         </section>
       ) : null}
       <Modal id='addItem' title='Add an item'/>
-      <Modal id='deleteList' title='Delete this list'/>
+      <Modal id='deleteList' title='Delete list'/>
       <Modal id='addList' title='Add a new list' receiver={receiver}/>
     </div>
   );

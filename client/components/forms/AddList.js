@@ -1,31 +1,41 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addListThunk } from '../../store/allLists';
 
-const AddListForm = ({receiver}) => {
+const AddListForm = ({ receiver }) => {
+  const dispatch = useDispatch();
   const emptyForm = {
     name: '',
     occasion: '',
-    occurrence: '',
+    occurrence: 'one-time',
     color: '#000000',
     date: '',
-    receiver
-  }
-  const [formData, setFormData] = useState(emptyForm)
+    receiver,
+  };
+  const [formData, setFormData] = useState(emptyForm);
 
   useEffect(() => {
     setFormData(emptyForm);
-  },[receiver])
+  }, [receiver]);
 
   const handleChange = (event) => {
-    setFormData({...formData, [event.target.name]: event.target.value });
-    console.log(event);
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    //exclude fields with empty strings
+    Object.keys(formData).forEach((key) => {
+      if (formData[key] === '') {
+        delete formData[key];
+      }
+    });
+
     console.log(formData);
-    setFormData(emptyForm);
+    dispatch(addListThunk(formData));
+    setFormData(emptyForm); //will restore it to empty form
   };
 
   return (
@@ -102,9 +112,9 @@ const AddListForm = ({receiver}) => {
           onChange={handleChange}
           value={formData.occurrence}
         >
-          <option value="1">one-time</option>
-          <option value="2">monthly</option>
-          <option value="3">yearly</option>
+          <option value="one-time">one-time</option>
+          <option value="monthly">monthly</option>
+          <option value="yearly">yearly</option>
         </select>
       </div>
       <button
