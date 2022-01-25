@@ -1,13 +1,16 @@
 import React from 'react';
+import AddListForm from '../forms/AddList';
 import AddItemForm from './AddItemForm';
 
-const Modal = ({ id, title }) => {
+const Modal = ({ id, title, receiver }) => {
   const getModalContent = () => {
     switch (id) {
       case 'addItem':
         return <AddItemForm />;
       case 'deleteList':
         return 'Delete this list?';
+      case 'addList':
+        return <AddListForm receiver={receiver}/>
       default:
         return 'none';
     }

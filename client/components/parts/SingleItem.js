@@ -21,7 +21,7 @@ const SingleItem = ({ item }) => {
       </div>
       <section className="item-info ms-2 w-50 position-relative">
         <a href={item.link} target="_blank" rel="noreferrer">
-          <h5>{item.title}</h5>
+          <p>{item.title}</p>
         </a>
         <p id="price">${item.price}</p>
         <p id="rating">Star: {item.rating}</p>

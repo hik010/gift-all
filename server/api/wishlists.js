@@ -45,36 +45,36 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// POST /api/wishlist/me => adding a new wishlist for me
-router.post('/me', requireToken, async (req, res, next) => {
+// POST /api/wishlist => adding a new wishlist for me
+router.post('/', requireToken, async (req, res, next) => {
   try {
     // make a list for me by default
     // make a list for someone else
     const singleList = await Wishlist.create({
       ...req.body,
       userId: req.user.id,
-      receiver: 'me',
     });
     res.json(singleList);
   } catch (err) {
     next(err);
   }
 });
+
 // POST /api/wishlist/others => adding a new gift list for others
-router.post('/others', requireToken, async (req, res, next) => {
-  try {
-    // make a list for me by default
-    // make a list for someone else
-    const singleList = await Wishlist.create({
-      ...req.body,
-      userId: req.user.id,
-      receiver: 'others',
-    });
-    res.json(singleList);
-  } catch (err) {
-    next(err);
-  }
-});
+// router.post('/others', requireToken, async (req, res, next) => {
+//   try {
+//     // make a list for me by default
+//     // make a list for someone else
+//     const singleList = await Wishlist.create({
+//       ...req.body,
+//       userId: req.user.id,
+//       receiver: 'others',
+//     });
+//     res.json(singleList);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 // DELETE /api/wishlist/:id => will delete the list + delete wishlist_items entries
 router.delete('/:id', async (req, res, next) => {

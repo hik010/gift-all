@@ -5,9 +5,7 @@ import { getAllLists } from '../../store/allLists';
 import {
   clearSingleList,
   getSingleList,
-  setSingleList,
 } from '../../store/singleList';
-import SingleItem from './SingleItem';
 import Modal from './Modal';
 import SingleList from './SingleList';
 
@@ -28,7 +26,7 @@ const MyWishlist = ({ receiver }) => {
   const clickCard = (event, chosenList) => {
     if (chosenList.id !== singleList.id) {
       dispatch(getSingleList(chosenList));
-    } else if (event.target.id === 'top-bar') {
+    } else if (event.target.id === 'top-bar' || event.target.id === 'item-name') {
       dispatch(clearSingleList());
     }
   };
@@ -40,49 +38,23 @@ const MyWishlist = ({ receiver }) => {
           {allLists.map((list) => (
             <SingleList key={list.id} list={list} clickCard={clickCard} />
           ))}
+          <button
+          className="btn btn-success"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#addList"
+        >
+          Add new List
+        </button>
         </section>
       ) : null}
       <Modal id='addItem' title='Add an item'/>
       <Modal id='deleteList' title='Delete this list'/>
+      <Modal id='addList' title='Add a new list' receiver={receiver}/>
     </div>
   );
 };
 
-// const ListContent = ({ list }) => {
-//   const singleList = useSelector((state) => state.singleList);
-//   if (singleList.id !== list.id) return '';
 
-//   return (
-//     <>
-//       {singleList.items.length !== 0 ? (
-//         <div className="list-items d-flex mt-3 justify-content-start">
-//           {singleList.items.map((item) => (
-//             <SingleItem key={item.id} item={item} />
-//           ))}
-//         </div>
-//       ) : (
-//         <div className="mt-2"> No items here. </div>
-//       )}
-//       <div className="buttons-group">
-//         <button
-//           className="btn bg-success"
-//           type="button"
-//           data-bs-toggle="modal"
-//           data-bs-target="#addItem"
-//         >
-//           Add
-//         </button>
-//         <button
-//           className="btn bg-danger"
-//           type="button"
-//           data-bs-toggle="modal"
-//           data-bs-target="#deleteList"
-//         >
-//           Delete
-//         </button>
-//       </div>
-//     </>
-//   );
-// };
 
 export default MyWishlist;

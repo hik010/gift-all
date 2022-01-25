@@ -22,11 +22,11 @@ const MyInfo = ({ userData }) => {
   }
 
   return (
-    <div className="my-info mt-5 d-flex">
+    <div className="my-info indented mt-5 d-flex flex-md-row flex-column align-items-center">
       <img
         src={formState.image}
-        className=".img-fluid w-25 border rounded-circle"
-        alt="my-image"
+        className="img-fluid border rounded-circle"
+        alt="profile pic"
       ></img>
       <form className="ms-5 flex-grow-1">
         <div className="mb-3 row">

@@ -59,7 +59,7 @@ nav a {
 }
 
 div#heading {
-  width: 500px;
+  width: 100vw;
 
   top: 35%;
 }
@@ -102,8 +102,7 @@ section.lists-container {
 }
 
 div.list-card {
-  width: 60%;
-
+  width: 55vw;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 #00000033;
   transition: 0.3s;
@@ -111,7 +110,6 @@ div.list-card {
   border-left-width: 0.5rem;
   border-left-color: rgb(116, 165, 208);
   border-radius: 5px;
-
 }
 
 .list-card:hover {
@@ -141,11 +139,20 @@ div.list-card {
   border-radius: 10px;
 }
 
+/* ListContent */
+.list-items {
+  column-gap: 20px;
+  row-gap: 10px;
+}
+
+
 /* .single-item */
+.single-item {
+  flex-basis: 45%;
+}
 .delete-button {
   padding: 0 0.3rem;
   display: none;
-  text-decoration:;
 }
 
 .single-item:hover .delete-button {
@@ -156,3 +163,33 @@ div.list-card {
   font-size: 1rem;
   color: var(--main-bg-color);
 }
+
+/* My Profile */
+.my-info img {
+  width: 25%;
+  height: fit-content;
+}
+
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  div.list-card {
+    width: 75vw;
+  }
+  #heading h1 {
+    font-size: 2rem;
+  }
+
+  .my-info img {
+    width: 80%;
+    height: fit-content;
+  }
+
+}
+
+/*Small & Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .single-item {
+    flex-basis: 95%;
+  }
+ }
