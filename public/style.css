@@ -183,6 +183,7 @@ div.list-card {
 
   div#top-bar h4 {
     flex-basis: 100%;
+    margin-bottom: 0.5rem;
   }
 
   div.buttons-group {

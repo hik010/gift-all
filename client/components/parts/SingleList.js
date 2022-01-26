@@ -13,8 +13,8 @@ const SingleList = ({ list, clickCard }) => {
         console.log(event.target);
       }}
     >
-      <div id="top-bar" className='d-flex flex-wrap'>
-        <h4 className="d-inline me-2" id="item-name">
+      <div id="top-bar" className='d-flex flex-wrap align-items-center'>
+        <h4 className="d-inline me-3 mb-0" id="item-name">
           {list.name}
         </h4>
         {list.date && (
@@ -23,12 +23,12 @@ const SingleList = ({ list, clickCard }) => {
       </div>
 
       {/* only show the content if selected list */}
-      {singleList.id === list.id && <ListContent list={list} />}
+      {singleList.id === list.id && <ListContent selectedList={singleList} />}
     </div>
   );
 };
 
-const ListContent = ({ list }) => {
+const ListContent = ({ selectedList }) => {
   return (
     <>
       <div className="buttons-group">
@@ -49,15 +49,21 @@ const ListContent = ({ list }) => {
           Delete
         </button>
       </div>
-      {list.items.length !== 0 ? (
+      {selectedList.items.length !== 0 ? (
         <div className="list-items mt-3 d-flex flex-wrap justify-content-start">
-          {list.items.map((item) => (
+          {selectedList.items.map((item) => (
             <SingleItem key={item.id} item={item} />
           ))}
         </div>
       ) : (
         <div className="mt-3"> No items here. </div>
       )}
+
+      {/* Notes section */}
+      <footer>
+        <label>Notes</label>code
+        <textarea className="form-control">{selectedList.note}</textarea>
+      </footer>
     </>
   );
 };
