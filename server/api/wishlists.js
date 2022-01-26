@@ -50,7 +50,6 @@ router.post('/', requireToken, async (req, res, next) => {
   try {
     // make a list for me by default
     // make a list for someone else
-    console.log(req.body);
     const singleList = await Wishlist.create({
       ...req.body,
       userId: req.user.id,
