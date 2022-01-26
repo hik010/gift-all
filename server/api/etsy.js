@@ -21,14 +21,21 @@ const pythonPromise = data => {
   });
 };
 
+// GET /api/scrape
 router.get('/', async (req, res, next) => {
   try {
     // check if this is inside database already
-    let etsy_product_id = req.headers.link.split('listing/')[1].split('/')[0];
+    let product_id;
+    if(req.headers.formtype === 'Etsy') {
+      product_id = req.headers.link.split('listing/')[1].split('/')[0];
+    } else {
+      // google shopping link
+      product_id = req.headers.link.split('/product/')[1].split('?')[0];
+    }
 
     // use redis here later
     let found = await Item.findOne({
-      where: {product_id : etsy_product_id}
+      where: {product_id : product_id}
     });
     if (found) return res.json(found);
 

@@ -9,9 +9,6 @@ const SingleList = ({ list, clickCard }) => {
       className="list-card position-relative d-"
       key={list.id}
       onClick={(event) => clickCard(event, list)}
-      onMouseOver={(event) => {
-        console.log(event.target);
-      }}
     >
       <div id="top-bar" className='d-flex flex-wrap align-items-center'>
         <h4 className="d-inline me-3 mb-0" id="item-name">
@@ -61,7 +58,7 @@ const ListContent = ({ selectedList }) => {
 
       {/* Notes section */}
       <footer>
-        <label>Notes</label>code
+        <label>Notes</label>
         <textarea className="form-control">{selectedList.note}</textarea>
       </footer>
     </>

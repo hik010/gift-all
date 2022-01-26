@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 module.exports = router;
 
-router.use('/etsy', require('./etsy'))
+router.use('/scrape', require('./etsy'))
 router.use('/user', require('./users'))
 router.use('/wishlist', require('./wishlists'))
 router.use('/wishlist-item', require('./wishlists-items'))

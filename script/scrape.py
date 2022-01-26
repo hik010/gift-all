@@ -19,10 +19,16 @@ def etsy_single(etsy_link):
   numSales = listing_page.find('span', class_='wt-text-caption').getText()
   ratings = listing_page.find('input', attrs={'name': 'rating'})['value']
 
+  price = price.split('$')[1]
+  if(price[-1] == '+'):
+    price = price[0:-1]
+  else:
+    price = price[0:]
+
   data = {}
   data['product_id'] = listing_id
   data['title'] = title
-  data['price'] = (price.split('$')[1])
+  data['price'] = '%.2f' % float(price)
   data['num_sales'] = (numSales.split(' ')[0].replace(',',''))
   data['rating'] = float(ratings)
   data['image'] = first_img
@@ -31,13 +37,48 @@ def etsy_single(etsy_link):
 
   print(json.dumps(data))
 
-  # with open('data.txt', 'w') as outfile:
-  #   json.dump(data, outfile)
+def google_scrape(google_link):
+  headers = {  # <-- so the Google will treat your script as a "real" user browser.
+    "User-Agent":
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19582"
+}
+
+  res = requests.get(google_link,  headers=headers).text
+  s = BeautifulSoup(res, 'lxml')
+
+  product_id = google_link.split('/product/')[1].split('?')[0]
+  title = s.select_one('div.LDQll span').getText()
+  img = s.select_one('.sh-div__image')['src']
+  rating = s.select_one('.uYNZm').getText()
+  price_div = s.select_one('div.sh-pricebar__details-section')
+  price = price_div.select_one('div.FYiaub').getText().split(' ')[0].replace('$', '')
+  source = price_div.select_one('span').getText()
+  link = f"https://www.google.com{price_div.select_one('.D4MQ1')['href']}"
+
+  data = {}
+  data['product_id'] = product_id
+  data['title'] = title
+  data['price'] = float(price)
+  data['rating'] = float(rating)
+  data['image'] = img
+  data['link'] = link
+  data['source'] = source
+
+  print(json.dumps(data))
+
 
 if __name__ == '__main__':
-  parser = argparse.ArgumentParser(description='Fetch single product from Etsy')
-  parser.add_argument('links', nargs='+',help='etsy product link')
-  parser.add_argument('-o','--output', nargs=1, help='output file link')
+  parser = argparse.ArgumentParser(description='Fetch single product from etsy or google shopping')
+  parser.add_argument('links', nargs='+',help='etsy or google shopping product link')
+  parser.add_argument('-o','--output', nargs='?', help='output file link')
+  # parser.add_argument('-s', '--source', nargs='?', help='source of link (google or etsy')
   args = parser.parse_args()
   for link in args.links:
-    etsy_single(link)
+    if('etsy.com/listing' in link):
+      etsy_single(link)
+      # print('etsy link here')
+    elif ('google.com/shopping/product' in link):
+      # print('google link')
+      google_scrape(link)
+    else:
+      print('invalid link')

@@ -47,7 +47,7 @@ const CustomItem = ({ formType }) => {
       {/* {data.title && <SingleWishItem item={data} />} */}
       <button
         name={formType}
-        className="btn btn-primary"
+        className="btn btn-primary mt-3"
         onClick={() => {
           dispatch(addItemThunk(data));
           setData({ title: '', price: '', link: '' });

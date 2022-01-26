@@ -4,20 +4,32 @@ import { useDispatch } from 'react-redux';
 import { addItemThunk } from '../../store/singleList';
 import SingleItem from '../parts/SingleItem';
 
-const SourceLinkForm = ({ formType }) => {
+const SourceLinkForm = () => {
   let [data, setData] = useState({ link: '' });
+  let [formType, setFormType] = useState('');
   let dispatch = useDispatch();
 
   const handleChange = (event) => {
+    if(event.target.name === 'link') {
+      if(event.target.value.includes('etsy.com/listing')) {
+        setFormType('Etsy')
+      } else if (event.target.value.includes('google.com/shopping/product')) {
+        setFormType('Google Shopping')
+      } else {
+        setFormType('Invalid');
+      }
+    }
     setData({ [event.target.name]: event.target.value });
   };
 
   const fetchData = async (formType, link) => {
     try {
-      let { data } = await axios.get(`/api/${formType.toLowerCase()}`, {
+      console.log('link type ',formType);
+      let { data } = await axios.get(`/api/scrape`, {
         headers: {
           link,
-        },
+          formtype: formType
+        }
       });
       setData(data);
     } catch (e) {
@@ -41,7 +53,7 @@ const SourceLinkForm = ({ formType }) => {
 
       <button
         name={formType}
-        className="btn btn-primary"
+        className="btn btn-primary mt-3"
         onClick={() => {
           if (!data.title) fetchData(formType, data.link);
           else {

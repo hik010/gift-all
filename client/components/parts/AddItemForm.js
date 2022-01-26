@@ -14,10 +14,8 @@ const AddItemForm = () => {
 
   const formFields = () => {
     switch (formType) {
-      case 'Etsy':
-        return <SourceLinkForm formType={formType} />;
-      case 'Google Shopping':
-        return <SourceLinkForm formType={formType} />;
+      case 'Etsy / Google Shopping':
+        return <SourceLinkForm/>;
       case 'custom':
         return <CustomItem formType={formType}/>;
       default:

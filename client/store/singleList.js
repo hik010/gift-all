@@ -70,7 +70,6 @@ export const addItemThunk = (itemData) => {
             },
           }
         );
-        console.log(res.data);
         dispatch(addItem(res.data));
       }
     } catch (err) {
