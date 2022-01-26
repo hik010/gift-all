@@ -93,7 +93,6 @@ section.lists-container {
   display: flex;
   flex-direction: column;
   gap: 25px;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -117,8 +116,9 @@ div.list-card {
 }
 
 .date-tag {
-  margin: 0 1rem;
+  /* margin: 0 1rem; */
   padding: 0.1rem 0.5rem;
+  height: fit-content;
   font-size: smaller;
   background-color: #96837c;
   color: white;
@@ -173,11 +173,21 @@ div.list-card {
 
 /* X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+  #heading h1 {
+    font-size: 2rem;
+  }
+
   div.list-card {
     width: 75vw;
   }
-  #heading h1 {
-    font-size: 2rem;
+
+  div#top-bar h4 {
+    flex-basis: 100%;
+  }
+
+  div.buttons-group {
+    position: static;
+    margin-top: 1rem;
   }
 
   .my-info img {
