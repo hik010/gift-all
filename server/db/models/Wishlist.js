@@ -15,6 +15,10 @@ const Wishlist = db.define('wishlist', {
     type: Sequelize.ENUM('me', 'others'),
     defaultValue: 'me'
   },
+  color: {
+    type: Sequelize.STRING,
+    defaultValue: 'mediumpurple'
+  },
   date: {
     type: Sequelize.DATE,
     defaultValue: null
