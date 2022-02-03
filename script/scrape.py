@@ -27,7 +27,7 @@ def amazon_scrape(amazon_link):
   product_id = link.split('/')[-1]
   title = center_col.select_one('span#productTitle').text.strip()
   rating = center_col.select_one('span.a-icon-alt').text.split(' ')[0]
-  price_in_str = center_col.select_one('span.a-price.apexPriceToPay > span').text
+  price_in_str = center_col.select_one('span.a-offscreen').text
   price = price_in_str[1:]
   # numReviews = center_col.select_one('span#acrCustomerReviewText').text.split(' ')[0]
 
