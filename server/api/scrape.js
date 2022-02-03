@@ -45,6 +45,7 @@ router.get('/', async (req, res, next) => {
     let dataFromPython = await pythonPromise([req.headers.link]);
     res.json(JSON.parse(dataFromPython));
   } catch (err) {
+    console.error('error in scraping', err);
     next(err);
   }
 });
