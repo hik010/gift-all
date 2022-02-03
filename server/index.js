@@ -41,7 +41,7 @@ app.use('*', (req, res) =>
 
 // error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('Error caught at top level',err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error');
 });
 

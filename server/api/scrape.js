@@ -45,7 +45,6 @@ router.get('/', async (req, res, next) => {
     let dataFromPython = await pythonPromise([req.headers.link]);
     res.json(JSON.parse(dataFromPython));
   } catch (err) {
-    console.log(err)
     next(err);
   }
 });
