@@ -41,8 +41,8 @@ app.use('*', (req, res) =>
 
 // error handling middleware
 app.use((err, req, res, next) => {
-  console.error('Error caught at top level',err.stack);
-  res.status(err.status || 500).send(err.stack || 'Internal server error');
+  console.error('Error caught at top level',err);
+  res.status(err.status || 500).send(err || 'Internal server error');
 });
 
 const PORT = process.env.PORT || 8090;

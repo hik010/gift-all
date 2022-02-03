@@ -18,7 +18,7 @@ def amazon_scrape(amazon_link):
     }
 
   response = requests.get(amazon_link, headers=header)
-  soup = BeautifulSoup(response.content, "lxml")
+  soup = BeautifulSoup(response.text, "lxml")
 
   img = soup.select_one('#imgTagWrapperId img')['src']
   link = soup.select_one('link[rel=canonical]')['href']
