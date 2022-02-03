@@ -36,7 +36,7 @@ const SourceLinkForm = () => {
       });
       setData(data);
     } catch (e) {
-      console.error('error in fetchData', fetchData);
+      console.error('error in fetchData', e);
     }
   };
 
