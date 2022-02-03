@@ -11,8 +11,6 @@ header = {
   }
 
 def amazon_scrape(amazon_link):
-
-
   response = requests.get(amazon_link, headers=header)
   soup = BeautifulSoup(response.text, "lxml")
 

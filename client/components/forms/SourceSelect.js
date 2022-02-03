@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SourceSelectForm = ({ handleChange }) => {
-  let sourceTypes = ['Amazon / Etsy / Google Shopping', 'custom'];
+  let sourceTypes = ['Etsy / Google Shopping', 'custom'];
   return (
     <>
       {sourceTypes.map((source, idx) => (
