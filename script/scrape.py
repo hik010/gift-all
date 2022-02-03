@@ -29,7 +29,7 @@ def amazon_scrape(amazon_link):
   rating = center_col.select_one('span.a-icon-alt').text.split(' ')[0]
   price_in_str = center_col.select_one('span.a-price > span').text
   price = price_in_str[1:]
-  numReviews = center_col.select_one('span#acrCustomerReviewText').text.split(' ')[0]
+  # numReviews = center_col.select_one('span#acrCustomerReviewText').text.split(' ')[0]
 
   data = {}
   data['product_id'] = product_id

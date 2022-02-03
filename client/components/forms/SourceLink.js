@@ -11,12 +11,15 @@ const SourceLinkForm = () => {
 
   const handleChange = (event) => {
     if(event.target.name === 'link') {
-      if(event.target.value.includes('etsy.com/listing')) {
+      let product_link = event.target.value;
+      if(product_link.includes('etsy.com/listing')) {
         setFormType('Etsy')
-      } else if (event.target.value.includes('google.com/shopping/product')) {
+      } else if (product_link.includes('google.com/shopping/product')) {
         setFormType('Google Shopping')
+      } else if (product_link.includes('amazon.com')) {
+        setFormType('Amazon');
       } else {
-        setFormType('Invalid');
+        setFormType('Invalid')
       }
     }
     setData({ [event.target.name]: event.target.value });

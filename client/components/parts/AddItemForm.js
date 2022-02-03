@@ -13,13 +13,11 @@ const AddItemForm = () => {
   };
 
   const formFields = () => {
-    switch (formType) {
-      case 'Etsy / Google Shopping':
-        return <SourceLinkForm/>;
-      case 'custom':
-        return <CustomItem formType={formType}/>;
-      default:
-        return ''
+    if(!formType) return;
+    if (formType === 'custom') {
+      return <CustomItem formType={formType}/>;
+    } else {
+      return <SourceLinkForm/>;
     }
   };
 

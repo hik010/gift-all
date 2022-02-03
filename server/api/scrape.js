@@ -26,11 +26,13 @@ router.get('/', async (req, res, next) => {
   try {
     // check if this is inside database already
     let product_id;
-    if(req.headers.formtype === 'Etsy') {
-      product_id = req.headers.link.split('listing/')[1].split('/')[0];
-    } else {
-      // google shopping link
-      product_id = req.headers.link.split('/product/')[1].split('?')[0];
+    let {link, formtype} = req.headers
+    if(formtype === 'Etsy') {
+      product_id = link.split('listing/')[1].split('/')[0];
+    } else if (formtype === 'Amazon') {
+      product_id = link.match(/([A-Z])\w+/g)[0];
+    } else {//google shopping link
+      product_id = link.match(/\d+/g)[0];
     }
 
     // use redis here later
