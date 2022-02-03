@@ -1,0 +1,39 @@
+[
+  {
+    "product_id": "B07978J597",
+    "title": "Kindle - With a Built-in Front Light - Black - Ad-Supported",
+    "price": 89.99,
+    "rating": 4.6,
+    "image": "https://m.media-amazon.com/images/I/61LKmORUuXL._AC_SY300_SX300_.jpg",
+    "link": "https://www.amazon.com/Kindle-Now-with-Built-in-Front-Light/dp/B07978J597",
+    "source": "amazon"
+  },
+  {
+    "product_id": "701749532",
+    "title": "Personalised Crystal Decanter Laser Engraved Gift Ideas | Etsy",
+    "price": "91.98",
+    "num_sales": "64704",
+    "rating": 4.8813,
+    "image": "https://i.etsystatic.com/17354667/r/il/f6e0b5/1917145424/il_794xN.1917145424_ck8r.jpg",
+    "link": "https://www.etsy.com/listing/701749532/personalised-crystal-decanter-laser?ref=anchored_listing&bes=1",
+    "source": "etsy"
+  },
+  {
+    "product_id": "923925068",
+    "title": "Dainty Circular Stud Earrings  Handmade Jewelry  Sterling | Etsy",
+    "source": "etsy",
+    "price": 28.88,
+    "rating": 4.9013,
+    "image": "https://i.etsystatic.com/26061027/r/il/b7d84a/2777550040/il_794xN.2777550040_hhka.jpg",
+    "link": "https://www.etsy.com/listing/923925068/dainty-circular-stud-earrings-handmade?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=&ref=sc_gallery-1-1&pro=1&frs=1&listing_id=923925068&listing_slug=dainty-circular-stud-earrings-handmade&plkey=0f892ae9cb34310db9aa863fb42053ade0819c55%3A923925068"
+  },
+  {
+    "product_id": "7008326304182003253",
+    "title": "Google - Home Mini - Chalk",
+    "price": 49.0,
+    "rating": 4.6,
+    "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRrXYL6p-K9PYNpmFNPrKRzXcj-jGZ3rSwEbjPMrl5Pa_rhphZRu6lwPFunuUX5pgJQnQ6aSra8AAZ_yeXL9i1yrhxLzrl8&usqp=CAY",
+    "link": "https://www.google.com/url?q=https://www.homedepot.com/p/Google-Home-Mini-Chalk-GA00210-US/303335622%3Fsource%3Dshoppingads%26locale%3Den-US%26g_store%3D121&sa=U&ved=0ahUKEwjKi93MheP1AhWkneAKHaerCWsQx50ICC4&usg=AOvVaw27BHb-WKV0CC3xnBJ-XoN-",
+    "source": "Home Depot"
+  }
+]
