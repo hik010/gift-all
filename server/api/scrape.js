@@ -12,10 +12,12 @@ const pythonPromise = (data) => {
     const python = spawn(pythonPath, [scriptPath, ...data]);
 
     python.stdout.on('data', (data) => {
+      console.log(data.toString())
       resolve(data.toString());
     });
 
     python.stderr.on('data', (data) => {
+      console.log('err', data)
       reject(data.toString());
     });
   });
