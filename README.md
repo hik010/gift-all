@@ -35,6 +35,7 @@ GiftAll is a mobile friendly application that will keep track of any gift ideas 
 <img width="350" src="./public/screenshots/login.png">
 <img width="350" src="./public/screenshots/dashboard.png">
 </div>
+
 - Login or Make an Account.
 - Go to My Dashboard to see my current lists and click the one you wish to view.
 - Feel free to add/remove items from a list.
