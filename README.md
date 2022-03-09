@@ -22,7 +22,7 @@ GiftAll is a mobile friendly application that will keep track of any gift ideas 
 
 ## Getting Started & Execute
 
-1. Clone this repository on your local device <br>`git clone git@github.com:hik010/gift-all.git`
+1. Clone this repository on your local device <br>`git clone https://github.com/hik010/gift-all.git`
 2. Install dependencies: `npm install`
 3. Create the database: `createdb gift-all-dev`
 4. Seed the database by running: `npm run seed`
