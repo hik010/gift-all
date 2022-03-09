@@ -3,9 +3,7 @@ const pkg = require('../../package.json');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') });
 
-const databaseName =
-  pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
-
+const databaseName = process.env.NODE_ENV === 'production' ? 'stackathon' : pkg.name;
 
 const config = {
   logging: false,
