@@ -3,7 +3,7 @@
 Web Application that will remember and organize the gift ideas to show yourself or others some love.
 <br>
 
-<div align="center">
+<div align="left">
 <img width="30" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/javascript.svg"/>
 <img width="30" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/react.svg"/>
 <img width="30" src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/redux.svg"/>
@@ -33,7 +33,6 @@ GiftAll is a mobile friendly application that will keep track of any gift ideas 
 - Go to My Dashboard to see my current lists and click the one you wish to view.
   ![dashboard](/public/screenshots/dashboard.png 'San Juan Mountains')
 - Feel free to add/remove items from a list.
-
 
 <!-- ## Help
 
