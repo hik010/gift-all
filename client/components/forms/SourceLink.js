@@ -27,7 +27,7 @@ const SourceLinkForm = () => {
 
   const fetchData = async (formType, link) => {
     try {
-      console.log('link type ', formType);
+      // console.log('link type ', formType);
       let { data } = await axios.get(`/api/scrape`, {
         headers: {
           link,
