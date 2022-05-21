@@ -10,16 +10,16 @@ const SourceLinkForm = () => {
   let dispatch = useDispatch();
 
   const handleChange = (event) => {
-    if(event.target.name === 'link') {
+    if (event.target.name === 'link') {
       let product_link = event.target.value;
-      if(product_link.includes('etsy.com/listing')) {
-        setFormType('Etsy')
+      if (product_link.includes('etsy.com/listing')) {
+        setFormType('Etsy');
       } else if (product_link.includes('google.com/shopping/product')) {
-        setFormType('Google Shopping')
+        setFormType('Google Shopping');
       } else if (product_link.includes('amazon.com')) {
         setFormType('Amazon');
       } else {
-        setFormType('Invalid')
+        setFormType('Invalid');
       }
     }
     setData({ [event.target.name]: event.target.value });
@@ -27,12 +27,12 @@ const SourceLinkForm = () => {
 
   const fetchData = async (formType, link) => {
     try {
-      console.log('link type ',formType);
+      console.log('link type ', formType);
       let { data } = await axios.get(`/api/scrape`, {
         headers: {
           link,
-          formtype: formType
-        }
+          formtype: formType,
+        },
       });
       setData(data);
     } catch (e) {
